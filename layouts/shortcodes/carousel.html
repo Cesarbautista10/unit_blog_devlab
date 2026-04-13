@@ -1,0 +1,30 @@
+{{ $id := .Get "id" | default (printf "carousel-%d" now.UnixNano) }}
+{{ $lines := split (.Inner | trim " \n\r\t") "\n" }}
+{{ $valid := slice }}
+{{ range $lines }}
+  {{ $line := trim . " \n\r\t" }}
+  {{ if and $line (ne $line "") }}
+    {{ $valid = $valid | append $line }}
+  {{ end }}
+{{ end }}
+
+{{ if gt (len $valid) 0 }}
+<div class="content-carousel mt-4" id="{{ $id }}" data-carousel="true">
+  <div class="content-carousel-track">
+    {{ range $valid }}
+      {{ $parts := split . "|" }}
+      {{ $src := trim (index $parts 0) " " }}
+      {{ $alt := "Imagen" }}
+      {{ if ge (len $parts) 2 }}
+        {{ $alt = trim (index $parts 1) " " }}
+      {{ end }}
+      <figure class="content-carousel-slide">
+        <img src="{{ $src }}" alt="{{ $alt }}" loading="lazy" data-expandable="true" />
+      </figure>
+    {{ end }}
+  </div>
+  <button class="content-carousel-prev" type="button" aria-label="Anterior">&#10094;</button>
+  <button class="content-carousel-next" type="button" aria-label="Siguiente">&#10095;</button>
+  <div class="content-carousel-dots"></div>
+</div>
+{{ end }}

@@ -1,0 +1,29 @@
+baseURL = 'https://cesarbautista10.github.io/unit_blog_devlab/'
+languageCode = 'es'
+title = 'Blog de Avances Demo'
+
+[params]
+author = 'Equipo DevLab'
+description = 'Seguimiento de avances por tarjeta demo, con fotos y explicaciones.'
+
+# Giscus (GitHub Discussions) — rellena repo_id y category_id despues de activar Discussions
+# Guia: https://giscus.app  →  selecciona tu repo y copia los IDs
+[params.giscus]
+repo          = "Cesarbautista10/unit_blog_devlab"
+repo_id       = "REEMPLAZA_CON_REPO_ID"
+category      = "Retroalimentacion"
+category_id   = "REEMPLAZA_CON_CATEGORY_ID"
+mapping       = "pathname"
+reactions     = "1"
+emit_metadata = "0"
+theme_light   = "light"
+theme_dark    = "dark_dimmed"
+
+[params.classification]
+tipos = ['firmware', 'microcontroladores', 'productos', 'proximamente', 'caracteristicas-dispositivo', 'documentacion-general']
+modulos = ['esp32', 'sensores', 'energia', 'pantallas', 'comunicacion', 'general']
+
+[taxonomies]
+tag = 'tags'
+tipo = 'tipos'
+modulo = 'modulos'

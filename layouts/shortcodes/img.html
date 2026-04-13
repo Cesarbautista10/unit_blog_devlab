@@ -1,0 +1,38 @@
+{{ $src     := .Get "src" }}
+{{ $alt     := .Get "alt"     | default "" }}
+{{ $caption := .Get "caption" | default "" }}
+{{ $size    := .Get "size"    | default "full" }}
+{{ $align   := .Get "align"   | default "center" }}
+{{ $border  := .Get "border"  | default "true" }}
+
+{{ $widthClass := dict
+  "xs"   "max-w-xs"
+  "sm"   "max-w-sm"
+  "md"   "max-w-md"
+  "lg"   "max-w-lg"
+  "xl"   "max-w-xl"
+  "2xl"  "max-w-2xl"
+  "full" "w-full"
+}}
+
+{{ $alignClass := dict
+  "left"   "mr-auto"
+  "center" "mx-auto"
+  "right"  "ml-auto"
+}}
+
+{{ $w := index $widthClass $size | default "w-full" }}
+{{ $a := index $alignClass $align | default "mx-auto" }}
+
+<figure class="my-5 {{ $w }} {{ $a }}">
+  <img
+    src="{{ $src }}"
+    alt="{{ $alt }}"
+    loading="lazy"
+    data-expandable="true"
+    class="cursor-zoom-in rounded-xl w-full h-auto transition duration-300 hover:opacity-95{{ if eq $border "true" }} border border-line{{ end }}"
+  />
+  {{ if $caption }}
+    <figcaption class="mt-2 text-center text-xs text-ink/50 italic">{{ $caption }}</figcaption>
+  {{ end }}
+</figure>

@@ -1,0 +1,29 @@
+{{ define "main" }}
+<section class="rounded-2xl border border-line bg-panel p-6 md:p-8">
+  <p class="text-xs font-semibold uppercase tracking-[0.14em] text-ink/55">Publicaciones</p>
+  <h1 class="mt-2 font-display text-3xl font-extrabold tracking-tight text-ink md:text-4xl">{{ .Title }}</h1>
+  <p class="mt-2 text-ink/70">Registro historico de avances por tarjeta demo.</p>
+</section>
+
+{{ if gt (len .Pages) 0 }}
+  <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+    {{ range .Pages.ByDate.Reverse }}
+      {{ $entryAuthor := .Params.author | default .Site.Params.author }}
+      <article class="rounded-xl border border-line bg-panel p-5 transition hover:-translate-y-0.5 hover:bg-panelSoft">
+        <p class="mb-2 inline-flex rounded-md border border-line bg-panelSoft px-2 py-1 text-[11px] font-semibold uppercase tracking-wide text-ink/65">{{ .Params.estado }}</p>
+        <h2 class="font-display text-xl font-bold leading-tight text-ink"><a href="{{ .RelPermalink }}" class="hover:underline">{{ .Title }}</a></h2>
+        <p class="mt-2 text-sm text-ink/65">
+          {{ .Date.Format "02/01/2006" }} | Tarjeta: {{ .Params.tarjeta }} | Estado: {{ .Params.estado }} | Autor: {{ $entryAuthor }}
+        </p>
+        <p class="mt-1 text-xs text-ink/65">
+          {{ with .Params.tipos }}<a class="hover:underline" href="/tipos/{{ index . 0 | urlize }}/">Tipo: {{ delimit . ", " }}</a>{{ end }}
+          {{ with .Params.modulos }} | <a class="hover:underline" href="/modulos/{{ index . 0 | urlize }}/">Modulo: {{ delimit . ", " }}</a>{{ end }}
+        </p>
+        <p class="mt-3 text-sm text-ink/80">{{ .Params.resumen }}</p>
+      </article>
+    {{ end }}
+  </div>
+{{ else }}
+  <p class="mt-6 rounded-xl border border-dashed border-line bg-panel p-4 text-sm text-ink/75">No hay publicaciones en esta seccion todavia.</p>
+{{ end }}
+{{ end }}

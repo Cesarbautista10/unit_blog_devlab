@@ -1,0 +1,167 @@
+{{ define "main" }}
+{{ $allPosts := where .Site.RegularPages "Section" "avances" }}
+{{ $featuredPosts := where $allPosts "Params.destacado" true }}
+{{ $regularPosts := where $allPosts "Params.destacado" "!=" true }}
+{{ $orderedPosts := union $featuredPosts $regularPosts }}
+{{ $posts := first 8 $orderedPosts }}
+{{ $slides := first 5 $orderedPosts }}
+<section class="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
+  <article class="overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-slate-950 via-slate-900 to-orange-950 p-7 text-white md:p-10">
+    <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-300">Demo Hub</p>
+    <h1 class="mt-3 max-w-2xl font-display text-3xl font-extrabold tracking-tight md:text-5xl">Inicio de Demos y Documentacion Tecnica</h1>
+    <p class="mt-4 max-w-2xl text-sm text-slate-200 md:text-base">Un espacio para publicar avances de firmware, microcontroladores, productos y guias listas para soporte inmediato.</p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a href="/avances/" class="rounded-xl bg-white px-4 py-2 text-sm font-bold text-slate-900 transition hover:bg-slate-100">Ver todas las demos</a>
+      <a href="/tipos/documentacion-general/" class="rounded-xl border border-white/30 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/20">Ir a documentacion general</a>
+    </div>
+  </article>
+
+  <aside class="rounded-2xl border border-line bg-panel p-5">
+    <h2 class="font-display text-xl font-bold text-ink">Acceso Rapido</h2>
+    <div class="mt-4 grid gap-2 text-sm font-semibold text-ink/80">
+      <a href="/tipos/firmware/" class="rounded-lg border border-line bg-panelSoft px-3 py-2 hover:bg-panel">Firmware</a>
+      <a href="/tipos/microcontroladores/" class="rounded-lg border border-line bg-panelSoft px-3 py-2 hover:bg-panel">Microcontroladores</a>
+      <a href="/tipos/productos/" class="rounded-lg border border-line bg-panelSoft px-3 py-2 hover:bg-panel">Productos</a>
+      <a href="/tipos/proximamente/" class="rounded-lg border border-line bg-panelSoft px-3 py-2 hover:bg-panel">Proximamente</a>
+      <a href="/modulos/" class="rounded-lg border border-line bg-panelSoft px-3 py-2 hover:bg-panel">Navegar por modulos</a>
+      <a href="/tags/" class="rounded-lg border border-line bg-panelSoft px-3 py-2 hover:bg-panel">Ver todas las etiquetas</a>
+    </div>
+  </aside>
+</section>
+
+<section class="mt-6 rounded-2xl border border-line bg-panel p-5 md:p-6">
+  <div class="mb-4 flex items-center justify-between gap-3">
+    <h2 class="font-display text-2xl font-bold tracking-tight text-ink">Demos Destacadas</h2>
+    <a href="/avances/" class="text-sm font-semibold text-ink/65 hover:text-ink">Ver catalogo</a>
+  </div>
+  {{ if gt (len $posts) 0 }}
+    <div id="home-carousel" class="relative overflow-hidden rounded-xl border border-line bg-panelSoft">
+      <div id="home-carousel-track" class="flex transition-transform duration-500 ease-out">
+        {{ range $slides }}
+          <article class="min-w-full p-3 md:p-5">
+            <div class="grid gap-4 md:grid-cols-[1.2fr_0.8fr]">
+              <div class="flex items-center justify-center overflow-hidden rounded-lg border border-line bg-panelSoft" style="min-height:240px;max-height:340px;">
+                {{ $img := "" }}
+                {{ with .Params.fotos }}{{ $img = index . 0 }}{{ end }}
+                {{ if $img }}
+                  <img src="{{ $img }}" alt="Imagen demo"
+                    class="h-full w-full object-contain"
+                    style="max-height:340px;" />
+                {{ else }}
+                  <div class="h-60 w-full bg-gradient-to-r from-slate-200 to-slate-100"></div>
+                {{ end }}
+              </div>
+              <div class="rounded-lg border border-line bg-panel p-4 md:p-5">
+                <p class="inline-flex rounded-md border border-line bg-panelSoft px-2 py-1 text-[11px] font-semibold text-ink/65">{{ .Params.estado }}</p>
+                <h3 class="mt-3 font-display text-2xl font-bold leading-tight text-ink">
+                  <a href="{{ .RelPermalink }}" class="hover:underline">{{ .Title }}</a>
+                </h3>
+                <p class="mt-2 text-xs text-ink/60">{{ .Date.Format "02/01/2006" }} | Tarjeta {{ .Params.tarjeta }}</p>
+                <p class="mt-3 line-clamp-5 text-sm text-ink/75">{{ .Params.resumen }}</p>
+                <a href="{{ .RelPermalink }}" class="mt-4 inline-flex rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700 dark:bg-white dark:text-slate-900">Ver publicacion</a>
+              </div>
+            </div>
+          </article>
+        {{ end }}
+      </div>
+
+      <button id="home-carousel-prev" class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-line bg-panel/90 px-3 py-2 text-sm font-bold text-ink shadow-sm hover:bg-panel" aria-label="Anterior">&#10094;</button>
+      <button id="home-carousel-next" class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-line bg-panel/90 px-3 py-2 text-sm font-bold text-ink shadow-sm hover:bg-panel" aria-label="Siguiente">&#10095;</button>
+
+      <div id="home-carousel-dots" class="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-2">
+        {{ range $i, $s := $slides }}
+          <button data-index="{{ $i }}" class="h-2.5 w-2.5 rounded-full border border-line bg-white/70" aria-label="Ir a slide {{ add $i 1 }}"></button>
+        {{ end }}
+      </div>
+    </div>
+  {{ else }}
+    <p class="rounded-lg border border-dashed border-line bg-panelSoft p-4 text-sm text-ink/70">Aun no hay demos publicadas.</p>
+  {{ end }}
+</section>
+
+<section class="mt-6 rounded-2xl border border-line bg-panel p-5 md:p-6">
+  <div class="mb-4 flex items-center justify-between gap-3">
+    <h2 class="font-display text-2xl font-bold tracking-tight text-ink">Ultimos Avances</h2>
+    <a href="/avances/" class="text-sm font-semibold text-ink/65 hover:text-ink">Ver todo</a>
+  </div>
+  {{ if gt (len $posts) 0 }}
+    <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      {{ range $posts }}
+        {{ $entryAuthor := .Params.author | default .Site.Params.author }}
+        <article class="rounded-xl border border-line bg-panelSoft p-4 transition hover:-translate-y-0.5 hover:bg-panel">
+          <h3 class="font-display text-base font-bold leading-tight text-ink">
+            <a href="{{ .RelPermalink }}" class="hover:underline">{{ .Title }}</a>
+          </h3>
+          <p class="mt-2 text-xs text-ink/60">{{ .Date.Format "02/01/2006" }} | {{ .Params.tarjeta }} | Autor: {{ $entryAuthor }}</p>
+          <p class="mt-1 text-xs text-ink/60">
+            {{ with .Params.tipos }}<a class="hover:underline" href="/tipos/{{ index . 0 | urlize }}/">{{ delimit . ", " }}</a>{{ end }}
+            {{ with .Params.modulos }} | <a class="hover:underline" href="/modulos/{{ index . 0 | urlize }}/">{{ delimit . ", " }}</a>{{ end }}
+          </p>
+          <p class="mt-2 text-sm text-ink/75">{{ .Params.resumen }}</p>
+        </article>
+      {{ end }}
+    </div>
+  {{ else }}
+    <p class="rounded-lg border border-dashed border-line bg-panelSoft p-4 text-sm text-ink/70">Aun no hay avances. Crea el primero con: <strong class="text-ink">hugo new content avances/nombre.md</strong></p>
+  {{ end }}
+</section>
+
+<script>
+  (function () {
+    var root = document.getElementById("home-carousel");
+    if (!root) return;
+
+    var track = document.getElementById("home-carousel-track");
+    var prev = document.getElementById("home-carousel-prev");
+    var next = document.getElementById("home-carousel-next");
+    var dots = document.querySelectorAll("#home-carousel-dots button");
+    var total = dots.length;
+    var index = 0;
+    var timer;
+
+    function render() {
+      track.style.transform = "translateX(-" + (index * 100) + "%)";
+      dots.forEach(function (dot, i) {
+        if (i === index) {
+          dot.classList.add("bg-primary", "border-primary");
+          dot.classList.remove("bg-white/70");
+        } else {
+          dot.classList.remove("bg-primary", "border-primary");
+          dot.classList.add("bg-white/70");
+        }
+      });
+    }
+
+    function go(step) {
+      index = (index + step + total) % total;
+      render();
+    }
+
+    function startAuto() {
+      stopAuto();
+      timer = setInterval(function () { go(1); }, 5000);
+    }
+
+    function stopAuto() {
+      if (timer) clearInterval(timer);
+    }
+
+    prev.addEventListener("click", function () { go(-1); startAuto(); });
+    next.addEventListener("click", function () { go(1); startAuto(); });
+
+    dots.forEach(function (dot) {
+      dot.addEventListener("click", function () {
+        index = Number(dot.getAttribute("data-index"));
+        render();
+        startAuto();
+      });
+    });
+
+    root.addEventListener("mouseenter", stopAuto);
+    root.addEventListener("mouseleave", startAuto);
+
+    render();
+    if (total > 1) startAuto();
+  })();
+</script>
+{{ end }}

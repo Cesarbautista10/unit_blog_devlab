@@ -1,0 +1,15 @@
+{{ define "main" }}
+<section class="mx-auto max-w-3xl rounded-xl border border-line bg-panel p-8 text-center">
+  <p class="text-xs font-semibold uppercase tracking-wide text-ink/60">Error 404</p>
+  <h1 class="mt-2 font-display text-4xl font-bold text-ink">Pagina no encontrada</h1>
+  <p class="mx-auto mt-3 max-w-xl text-sm text-ink/75">
+    La URL que intentaste abrir no existe o cambio de ubicacion. Usa estas rutas para continuar.
+  </p>
+  <div class="mt-6 grid gap-3 sm:grid-cols-2">
+    <a href="/" class="rounded-md border border-line bg-panelSoft px-4 py-3 text-sm font-semibold text-ink hover:bg-panel">Ir al inicio</a>
+    <a href="/avances/" class="rounded-md border border-line bg-panelSoft px-4 py-3 text-sm font-semibold text-ink hover:bg-panel">Ir a publicaciones</a>
+    <a href="/tipos/" class="rounded-md border border-line bg-panelSoft px-4 py-3 text-sm font-semibold text-ink hover:bg-panel">Explorar por tipo</a>
+    <a href="/modulos/" class="rounded-md border border-line bg-panelSoft px-4 py-3 text-sm font-semibold text-ink hover:bg-panel">Explorar por modulo</a>
+  </div>
+</section>
+{{ end }}

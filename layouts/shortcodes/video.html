@@ -1,0 +1,36 @@
+{{ $src      := .Get "src" }}
+{{ $youtube  := .Get "youtube" }}
+{{ $caption  := .Get "caption" | default "" }}
+{{ $autoplay := .Get "autoplay" | default "false" }}
+
+<figure class="my-5 w-full">
+  {{ if $youtube }}
+    {{/* YouTube embed */}}
+    {{ $autoParam := "" }}
+    {{ if eq $autoplay "true" }}{{ $autoParam = "?autoplay=1&mute=1" }}{{ end }}
+    <div class="relative w-full overflow-hidden rounded-xl border border-line" style="padding-top:56.25%">
+      <iframe
+        class="absolute inset-0 h-full w-full"
+        src="https://www.youtube-nocookie.com/embed/{{ $youtube }}{{ $autoParam }}"
+        title="{{ $caption | default "Video" }}"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  {{ else if $src }}
+    {{/* Local / hosted video */}}
+    <video
+      class="w-full rounded-xl border border-line"
+      controls
+      {{ if eq $autoplay "true" }}autoplay muted loop{{ end }}
+      preload="metadata"
+    >
+      <source src="{{ $src }}" />
+      Tu navegador no soporta video HTML5.
+    </video>
+  {{ end }}
+  {{ if $caption }}
+    <figcaption class="mt-2 text-center text-xs text-ink/50 italic">{{ $caption }}</figcaption>
+  {{ end }}
+</figure>
