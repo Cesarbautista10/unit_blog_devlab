@@ -1,14 +1,14 @@
-{{ define "main" }}
+﻿{{ define "main" }}
 {{ $entryAuthor := .Params.author | default .Site.Params.author }}
 
 {{/* Breadcrumb */}}
 <nav class="mb-4 flex items-center gap-1.5 text-xs text-ink/55 font-medium">
-  <a href="/" class="hover:text-ink transition-colors">Inicio</a>
+  <a href="{{ "" | relURL }}" class="hover:text-ink transition-colors">Inicio</a>
   <span>/</span>
-  <a href="/avances/" class="hover:text-ink transition-colors">Demos</a>
+  <a href="{{ "avances/" | relURL }}" class="hover:text-ink transition-colors">Demos</a>
   {{ with .Params.tipos }}
   <span>/</span>
-  <a href="/tipos/{{ index . 0 | urlize }}/" class="hover:text-ink transition-colors capitalize">{{ index . 0 }}</a>
+  <a href="{{ printf "tipos/%s/" (index . 0 | urlize) | relURL }}" class="hover:text-ink transition-colors capitalize">{{ index . 0 }}</a>
   {{ end }}
   <span>/</span>
   <span class="text-ink/80 truncate max-w-[160px]">{{ .Title }}</span>
@@ -26,7 +26,7 @@
       <div class="p-6 md:p-8">
         {{/* Tipo chip */}}
         {{ with .Params.tipos }}
-          <a href="/tipos/{{ index . 0 | urlize }}/" class="inline-block mb-3 rounded-full bg-orange-50 border border-orange-200 px-3 py-0.5 text-xs font-bold uppercase tracking-widest text-orange-700 hover:bg-orange-100 transition-colors">{{ index . 0 }}</a>
+          <a href="{{ printf "tipos/%s/" (index . 0 | urlize) | relURL }}" class="inline-block mb-3 rounded-full bg-orange-50 border border-orange-200 px-3 py-0.5 text-xs font-bold uppercase tracking-widest text-orange-700 hover:bg-orange-100 transition-colors">{{ index . 0 }}</a>
         {{ end }}
 
         <h1 class="font-display text-3xl font-extrabold leading-tight tracking-tight text-ink md:text-4xl lg:text-5xl">{{ .Title }}</h1>
@@ -166,7 +166,7 @@
           {{ end }}
         </div>
         <div class="border-t border-line px-5 py-3">
-          <a href="/avances/" class="text-xs font-semibold text-primary hover:underline">Ver todos los demos →</a>
+          <a href="{{ "avances/" | relURL }}" class="text-xs font-semibold text-primary hover:underline">Ver todos los demos →</a>
         </div>
       </div>
     {{ end }}

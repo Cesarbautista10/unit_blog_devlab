@@ -1,7 +1,6 @@
 baseURL = 'https://cesarbautista10.github.io/unit_blog_devlab/'
 languageCode = 'es'
 title = 'Blog de Avances Demo'
-relativeURLs = true
 
 [params]
 author = 'Equipo DevLab'
