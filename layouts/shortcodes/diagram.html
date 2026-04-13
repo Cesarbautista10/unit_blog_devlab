@@ -3,13 +3,17 @@
 {{ $type    := .Get "type"    | default "image" }}
 {{ $height  := .Get "height"  | default "520" }}
 {{ $alt     := .Get "alt"     | default $caption }}
+{{ $assetSrc := $src }}
+{{ if and $assetSrc (not (or (hasPrefix $assetSrc "http://") (hasPrefix $assetSrc "https://") (hasPrefix $assetSrc "//") (hasPrefix $assetSrc "data:"))) }}
+  {{ $assetSrc = (replaceRE "^/" "" $assetSrc) | relURL }}
+{{ end }}
 
 <figure class="my-6 w-full">
   {{ if eq $type "pdf" }}
     {{/* PDF embed */}}
     <div class="overflow-hidden rounded-xl border border-line bg-panelSoft" style="height:{{ $height }}px">
       <iframe
-        src="{{ $src }}#toolbar=0&navpanes=0&scrollbar=1"
+        src="{{ $assetSrc }}#toolbar=0&navpanes=0&scrollbar=1"
         class="h-full w-full"
         title="{{ $caption | default "Diagrama" }}"
         loading="lazy"
@@ -19,7 +23,7 @@
       {{ if $caption }}
         <p class="text-xs text-ink/50 italic">{{ $caption }}</p>
       {{ end }}
-      <a href="{{ $src }}" target="_blank" rel="noopener"
+      <a href="{{ $assetSrc }}" target="_blank" rel="noopener"
         class="ml-auto flex-shrink-0 rounded-lg border border-line bg-panelSoft px-3 py-1.5 text-xs font-semibold text-ink/70 hover:text-ink transition-colors">
         Abrir PDF ↗
       </a>
@@ -28,7 +32,7 @@
   {{ else if eq $type "svg" }}
     {{/* SVG embed */}}
     <div class="overflow-auto rounded-xl border border-line bg-white p-4">
-      <img src="{{ $src }}" alt="{{ $alt }}" loading="lazy"
+      <img src="{{ $assetSrc }}" alt="{{ $alt }}" loading="lazy"
         data-expandable="true"
         class="mx-auto max-h-[{{ $height }}px] w-full cursor-zoom-in object-contain" />
     </div>
@@ -39,7 +43,7 @@
   {{ else }}
     {{/* Default: image diagram with diagram styling */}}
     <div class="overflow-hidden rounded-xl border border-line bg-white p-3">
-      <img src="{{ $src }}" alt="{{ $alt }}" loading="lazy"
+      <img src="{{ $assetSrc }}" alt="{{ $alt }}" loading="lazy"
         data-expandable="true"
         class="mx-auto cursor-zoom-in object-contain transition duration-300 hover:opacity-95"
         style="max-height:{{ $height }}px; width:100%;" />

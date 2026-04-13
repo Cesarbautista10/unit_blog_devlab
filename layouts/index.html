@@ -43,6 +43,9 @@
               <div class="flex items-center justify-center overflow-hidden rounded-lg border border-line bg-panelSoft" style="min-height:240px;max-height:340px;">
                 {{ $img := "" }}
                 {{ with .Params.fotos }}{{ $img = index . 0 }}{{ end }}
+                {{ if and $img (not (or (hasPrefix $img "http://") (hasPrefix $img "https://") (hasPrefix $img "//") (hasPrefix $img "data:"))) }}
+                  {{ $img = (replaceRE "^/" "" $img) | relURL }}
+                {{ end }}
                 {{ if $img }}
                   <img src="{{ $img }}" alt="Imagen demo"
                     class="h-full w-full object-contain"

@@ -23,10 +23,14 @@
 
 {{ $w := index $widthClass $size | default "w-full" }}
 {{ $a := index $alignClass $align | default "mx-auto" }}
+{{ $imgSrc := $src }}
+{{ if and $imgSrc (not (or (hasPrefix $imgSrc "http://") (hasPrefix $imgSrc "https://") (hasPrefix $imgSrc "//") (hasPrefix $imgSrc "data:"))) }}
+  {{ $imgSrc = (replaceRE "^/" "" $imgSrc) | relURL }}
+{{ end }}
 
 <figure class="my-5 {{ $w }} {{ $a }}">
   <img
-    src="{{ $src }}"
+    src="{{ $imgSrc }}"
     alt="{{ $alt }}"
     loading="lazy"
     data-expandable="true"

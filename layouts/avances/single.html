@@ -111,8 +111,12 @@
       {{ with .Params.fotos }}
         <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {{ range . }}
+            {{ $photo := . }}
+            {{ if not (or (hasPrefix $photo "http://") (hasPrefix $photo "https://") (hasPrefix $photo "//") (hasPrefix $photo "data:")) }}
+              {{ $photo = (replaceRE "^/" "" $photo) | relURL }}
+            {{ end }}
             <figure class="overflow-hidden rounded-xl border border-line bg-panelSoft group">
-              <img src="{{ . }}" alt="Foto del avance" loading="lazy" data-expandable="true"
+              <img src="{{ $photo }}" alt="Foto del avance" loading="lazy" data-expandable="true"
                 class="h-52 w-full cursor-zoom-in object-cover transition duration-300 group-hover:scale-105" />
             </figure>
           {{ end }}

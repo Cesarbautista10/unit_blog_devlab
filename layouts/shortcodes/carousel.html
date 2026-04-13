@@ -14,6 +14,9 @@
     {{ range $valid }}
       {{ $parts := split . "|" }}
       {{ $src := trim (index $parts 0) " " }}
+      {{ if and $src (not (or (hasPrefix $src "http://") (hasPrefix $src "https://") (hasPrefix $src "//") (hasPrefix $src "data:"))) }}
+        {{ $src = (replaceRE "^/" "" $src) | relURL }}
+      {{ end }}
       {{ $alt := "Imagen" }}
       {{ if ge (len $parts) 2 }}
         {{ $alt = trim (index $parts 1) " " }}

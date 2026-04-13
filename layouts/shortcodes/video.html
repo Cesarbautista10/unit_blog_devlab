@@ -2,6 +2,10 @@
 {{ $youtube  := .Get "youtube" }}
 {{ $caption  := .Get "caption" | default "" }}
 {{ $autoplay := .Get "autoplay" | default "false" }}
+{{ $videoSrc := $src }}
+{{ if and $videoSrc (not (or (hasPrefix $videoSrc "http://") (hasPrefix $videoSrc "https://") (hasPrefix $videoSrc "//") (hasPrefix $videoSrc "data:"))) }}
+  {{ $videoSrc = (replaceRE "^/" "" $videoSrc) | relURL }}
+{{ end }}
 
 <figure class="my-5 w-full">
   {{ if $youtube }}
@@ -26,7 +30,7 @@
       {{ if eq $autoplay "true" }}autoplay muted loop{{ end }}
       preload="metadata"
     >
-      <source src="{{ $src }}" />
+      <source src="{{ $videoSrc }}" />
       Tu navegador no soporta video HTML5.
     </video>
   {{ end }}
