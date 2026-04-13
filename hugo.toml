@@ -1,10 +1,10 @@
 baseURL = 'https://cesarbautista10.github.io/unit_blog_devlab/'
 languageCode = 'es'
-title = 'Blog de Avances Demo'
+title = 'Documentación UNIT'
 
 [params]
 author = 'Equipo DevLab'
-description = 'Seguimiento de avances por tarjeta demo, con fotos y explicaciones.'
+description = 'Documentación técnica, guías y recursos para tarjetas de desarrollo.'
 
 # Giscus (GitHub Discussions)
 [params.giscus]

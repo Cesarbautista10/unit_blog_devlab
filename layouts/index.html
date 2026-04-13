@@ -6,33 +6,68 @@
 {{ $posts := first 8 $orderedPosts }}
 {{ $slides := first 5 $orderedPosts }}
 <section class="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
-  <article class="overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-slate-950 via-slate-900 to-orange-950 p-7 text-white md:p-10">
-    <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-300">Demo Hub</p>
-    <h1 class="mt-3 max-w-2xl font-display text-3xl font-extrabold tracking-tight md:text-5xl">Inicio de Demos y Documentacion Tecnica</h1>
-    <p class="mt-4 max-w-2xl text-sm text-slate-200 md:text-base">Un espacio para publicar avances de firmware, microcontroladores, productos y guias listas para soporte inmediato.</p>
-    <div class="mt-6 flex flex-wrap gap-3">
-      <a href="{{ "avances/" | relURL }}" class="rounded-xl bg-white px-4 py-2 text-sm font-bold text-slate-900 transition hover:bg-slate-100">Ver todas las demos</a>
-      <a href="{{ "tipos/documentacion-general/" | relURL }}" class="rounded-xl border border-white/30 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/20">Ir a documentacion general</a>
+  <article class="overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-slate-950 via-slate-900 to-orange-950 p-7 text-white md:p-10 relative">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl"></div>
+    <div class="relative">
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-orange-300">🚀 Documentation Hub • UNIT Electronics</p>
+      <h1 class="mt-3 max-w-2xl font-display text-3xl font-extrabold tracking-tight md:text-5xl">Documentación Técnica</h1>
+      <p class="mt-4 max-w-2xl text-sm text-slate-200 md:text-base">Explora documentos de firmware, microcontroladores y productos con guías completas listas para soporte inmediato.</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="{{ "avances/" | relURL }}" class="rounded-xl bg-white px-5 py-2.5 text-sm font-bold text-slate-900 transition hover:bg-orange-50 hover:shadow-lg">
+          Ver toda la documentación →
+        </a>
+        <a href="{{ "tipos/documentacion-general/" | relURL }}" class="rounded-xl border-2 border-white/30 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20">
+          📚 Guías generales
+        </a>
+      </div>
+      <div class="mt-6 flex flex-wrap gap-4 text-xs text-slate-300">
+        <div class="flex items-center gap-1.5">
+          <span class="text-orange-400">●</span>
+          <span>{{ len $allPosts }} Publicaciones</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <span class="text-blue-400">●</span>
+          <span>Actualizado {{ now.Format "02/01/2006" }}</span>
+        </div>
+      </div>
     </div>
   </article>
 
-  <aside class="rounded-2xl border border-line bg-panel p-5">
-    <h2 class="font-display text-xl font-bold text-ink">Acceso Rapido</h2>
+  <aside class="rounded-2xl border border-line bg-panel p-5 shadow-sm">
+    <h2 class="font-display text-xl font-bold text-ink">🔗 Acceso Rápido</h2>
+    <p class="mt-1 text-xs text-ink/60">Navega por categorías</p>
     <div class="mt-4 grid gap-2 text-sm font-semibold text-ink/80">
-      <a href="{{ "tipos/firmware/" | relURL }}" class="rounded-lg border border-line bg-panelSoft px-3 py-2 hover:bg-panel">Firmware</a>
-      <a href="{{ "tipos/microcontroladores/" | relURL }}" class="rounded-lg border border-line bg-panelSoft px-3 py-2 hover:bg-panel">Microcontroladores</a>
-      <a href="{{ "tipos/productos/" | relURL }}" class="rounded-lg border border-line bg-panelSoft px-3 py-2 hover:bg-panel">Productos</a>
-      <a href="{{ "tipos/proximamente/" | relURL }}" class="rounded-lg border border-line bg-panelSoft px-3 py-2 hover:bg-panel">Proximamente</a>
-      <a href="{{ "modulos/" | relURL }}" class="rounded-lg border border-line bg-panelSoft px-3 py-2 hover:bg-panel">Navegar por modulos</a>
-      <a href="{{ "tags/" | relURL }}" class="rounded-lg border border-line bg-panelSoft px-3 py-2 hover:bg-panel">Ver todas las etiquetas</a>
+      <a href="{{ "tipos/firmware/" | relURL }}" class="group rounded-lg border border-line bg-panelSoft px-3 py-2.5 transition hover:border-orange-300 hover:bg-orange-50 dark:hover:bg-orange-950/20">
+        <span class="mr-2">⚙️</span>Firmware
+      </a>
+      <a href="{{ "tipos/microcontroladores/" | relURL }}" class="group rounded-lg border border-line bg-panelSoft px-3 py-2.5 transition hover:border-blue-300 hover:bg-blue-50 dark:hover:bg-blue-950/20">
+        <span class="mr-2">🔌</span>Microcontroladores
+      </a>
+      <a href="{{ "tipos/productos/" | relURL }}" class="group rounded-lg border border-line bg-panelSoft px-3 py-2.5 transition hover:border-green-300 hover:bg-green-50 dark:hover:bg-green-950/20">
+        <span class="mr-2">📦</span>Productos
+      </a>
+      <a href="{{ "tipos/proximamente/" | relURL }}" class="group rounded-lg border border-line bg-panelSoft px-3 py-2.5 transition hover:border-purple-300 hover:bg-purple-50 dark:hover:bg-purple-950/20">
+        <span class="mr-2">🚧</span>Proximamente
+      </a>
+      <div class="my-2 border-t border-line"></div>
+      <a href="{{ "modulos/" | relURL }}" class="group rounded-lg border border-line bg-panelSoft px-3 py-2.5 transition hover:border-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800">
+        <span class="mr-2">🧩</span>Navegar por módulos
+      </a>
+      <a href="{{ "tags/" | relURL }}" class="group rounded-lg border border-line bg-panelSoft px-3 py-2.5 transition hover:border-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800">
+        <span class="mr-2">🏷️</span>Ver etiquetas
+      </a>
     </div>
   </aside>
 </section>
 
-<section class="mt-6 rounded-2xl border border-line bg-panel p-5 md:p-6">
+<section class="mt-6 rounded-2xl border border-line bg-panel p-5 md:p-6 shadow-sm">
   <div class="mb-4 flex items-center justify-between gap-3">
-    <h2 class="font-display text-2xl font-bold tracking-tight text-ink">Demos Destacadas</h2>
-    <a href="{{ "avances/" | relURL }}" class="text-sm font-semibold text-ink/65 hover:text-ink">Ver catalogo</a>
+    <div>
+      <h2 class="font-display text-2xl font-bold tracking-tight text-ink">⭐ Documentos Destacados</h2>
+      <p class="mt-1 text-sm text-ink/60">Las publicaciones más importantes del momento</p>
+    </div>
+    <a href="{{ "avances/" | relURL }}" class="text-sm font-semibold text-primary hover:underline">Ver catálogo completo →</a>
   </div>
   {{ if gt (len $posts) 0 }}
     <div id="home-carousel" class="relative overflow-hidden rounded-xl border border-line bg-panelSoft">
@@ -55,13 +90,30 @@
                 {{ end }}
               </div>
               <div class="rounded-lg border border-line bg-panel p-4 md:p-5">
-                <p class="inline-flex rounded-md border border-line bg-panelSoft px-2 py-1 text-[11px] font-semibold text-ink/65">{{ .Params.estado }}</p>
-                <h3 class="mt-3 font-display text-2xl font-bold leading-tight text-ink">
-                  <a href="{{ .RelPermalink }}" class="hover:underline">{{ .Title }}</a>
+                <div class="mb-3 flex flex-wrap gap-2">
+                  <span class="inline-flex rounded-md border border-line bg-panelSoft px-2 py-1 text-[11px] font-semibold uppercase text-ink/65">{{ .Params.estado }}</span>
+                  {{ with .Params.tipos }}
+                    <span class="inline-flex rounded-md bg-orange-100 px-2 py-1 text-[11px] font-semibold text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">{{ index . 0 }}</span>
+                  {{ end }}
+                  {{ with .Params.modulos }}
+                    <span class="inline-flex rounded-md bg-blue-100 px-2 py-1 text-[11px] font-semibold text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">{{ index . 0 }}</span>
+                  {{ end }}
+                </div>
+                <h3 class="font-display text-2xl font-bold leading-tight text-ink">
+                  <a href="{{ .RelPermalink }}" class="hover:text-primary">{{ .Title }}</a>
                 </h3>
-                <p class="mt-2 text-xs text-ink/60">{{ .Date.Format "02/01/2006" }} | Tarjeta {{ .Params.tarjeta }}</p>
-                <p class="mt-3 line-clamp-5 text-sm text-ink/75">{{ .Params.resumen }}</p>
-                <a href="{{ .RelPermalink }}" class="mt-4 inline-flex rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700 dark:bg-white dark:text-slate-900">Ver publicacion</a>
+                <p class="mt-2 text-xs text-ink/60">
+                  📅 {{ .Date.Format "02/01/2006" }} | 🔧 Tarjeta {{ .Params.tarjeta }}
+                  {{ $entryAuthor := .Params.author | default .Site.Params.author }}
+                  {{ if $entryAuthor }} | ✍️ {{ $entryAuthor }}{{ end }}
+                </p>
+                <p class="mt-3 line-clamp-4 text-sm text-ink/75">{{ .Params.resumen }}</p>
+                <div class="mt-4 flex items-center gap-2">
+                  <a href="{{ .RelPermalink }}" class="inline-flex rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900">Ver publicacion →</a>
+                  {{ if .Params.destacado }}
+                    <span class="text-xl" title="Destacado">⭐</span>
+                  {{ end }}
+                </div>
               </div>
             </div>
           </article>
@@ -78,29 +130,59 @@
       </div>
     </div>
   {{ else }}
-    <p class="rounded-lg border border-dashed border-line bg-panelSoft p-4 text-sm text-ink/70">Aun no hay demos publicadas.</p>
+    <p class="rounded-lg border border-dashed border-line bg-panelSoft p-4 text-sm text-ink/70">Aún no hay documentos publicados.</p>
   {{ end }}
 </section>
 
-<section class="mt-6 rounded-2xl border border-line bg-panel p-5 md:p-6">
+<section class="mt-6 rounded-2xl border border-line bg-panel p-5 md:p-6 shadow-sm">
   <div class="mb-4 flex items-center justify-between gap-3">
-    <h2 class="font-display text-2xl font-bold tracking-tight text-ink">Ultimos Avances</h2>
-    <a href="{{ "avances/" | relURL }}" class="text-sm font-semibold text-ink/65 hover:text-ink">Ver todo</a>
+    <div>
+      <h2 class="font-display text-2xl font-bold tracking-tight text-ink">📋 Últimas Publicaciones</h2>
+      <p class="mt-1 text-sm text-ink/60">Descubre las actualizaciones más recientes</p>
+    </div>
+    <a href="{{ "avances/" | relURL }}" class="text-sm font-semibold text-primary hover:underline">Ver todas →</a>
   </div>
   {{ if gt (len $posts) 0 }}
     <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
       {{ range $posts }}
         {{ $entryAuthor := .Params.author | default .Site.Params.author }}
-        <article class="rounded-xl border border-line bg-panelSoft p-4 transition hover:-translate-y-0.5 hover:bg-panel">
-          <h3 class="font-display text-base font-bold leading-tight text-ink">
-            <a href="{{ .RelPermalink }}" class="hover:underline">{{ .Title }}</a>
-          </h3>
-          <p class="mt-2 text-xs text-ink/60">{{ .Date.Format "02/01/2006" }} | {{ .Params.tarjeta }} | Autor: {{ $entryAuthor }}</p>
-          <p class="mt-1 text-xs text-ink/60">
-            {{ with .Params.tipos }}<a class="hover:underline" href="{{ printf "tipos/%s/" (index . 0 | urlize) | relURL }}">{{ delimit . ", " }}</a>{{ end }}
-            {{ with .Params.modulos }} | <a class="hover:underline" href="{{ printf "modulos/%s/" (index . 0 | urlize) | relURL }}">{{ delimit . ", " }}</a>{{ end }}
-          </p>
-          <p class="mt-2 text-sm text-ink/75">{{ .Params.resumen }}</p>
+        {{ $img := "" }}
+        {{ with .Params.fotos }}{{ $img = index . 0 }}{{ end }}
+        {{ if and $img (not (or (hasPrefix $img "http://") (hasPrefix $img "https://") (hasPrefix $img "//") (hasPrefix $img "data:"))) }}
+          {{ $img = (replaceRE "^/" "" $img) | relURL }}
+        {{ end }}
+        <article class="rounded-xl border border-line bg-panelSoft overflow-hidden transition hover:-translate-y-1 hover:shadow-lg">
+          <a href="{{ .RelPermalink }}" class="block">
+            {{ if $img }}
+              <div class="h-40 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
+                <img src="{{ $img }}" alt="{{ .Title }}" class="h-full w-full object-cover transition hover:scale-105" />
+              </div>
+            {{ else }}
+              <div class="h-40 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
+                <span class="text-4xl text-slate-400">📷</span>
+              </div>
+            {{ end }}
+          </a>
+          <div class="p-4">
+            <div class="mb-2 flex flex-wrap gap-1.5">
+              <span class="inline-flex rounded-md border border-line bg-panel px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-ink/65">{{ .Params.estado }}</span>
+              {{ with .Params.tipos }}
+                <span class="inline-flex rounded-md bg-orange-100 px-2 py-0.5 text-[10px] font-semibold text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">{{ index . 0 }}</span>
+              {{ end }}
+            </div>
+            <h3 class="font-display text-base font-bold leading-tight text-ink">
+              <a href="{{ .RelPermalink }}" class="hover:text-primary">{{ .Title }}</a>
+            </h3>
+            <p class="mt-2 text-xs text-ink/60">{{ .Date.Format "02/01/2006" }} | {{ .Params.tarjeta }}</p>
+            {{ with .Params.modulos }}
+              <div class="mt-2 flex flex-wrap gap-1">
+                {{ range . }}
+                  <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">{{ . }}</span>
+                {{ end }}
+              </div>
+            {{ end }}
+            <p class="mt-2 line-clamp-2 text-sm text-ink/75">{{ .Params.resumen }}</p>
+          </div>
         </article>
       {{ end }}
     </div>
