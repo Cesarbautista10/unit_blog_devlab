@@ -1,19 +1,18 @@
 baseURL = 'https://cesarbautista10.github.io/unit_blog_devlab/'
 languageCode = 'es'
 title = 'Blog de Avances Demo'
+relativeURLs = true
 
 [params]
 author = 'Equipo DevLab'
 description = 'Seguimiento de avances por tarjeta demo, con fotos y explicaciones.'
 
-# Giscus (GitHub Discussions) — rellena repo_id y category_id despues de activar Discussions
-# Guia: https://giscus.app  →  selecciona tu repo y copia los IDs
+# Giscus (GitHub Discussions)
 [params.giscus]
 repo          = "Cesarbautista10/unit_blog_devlab"
-repo_id       = "REEMPLAZA_CON_REPO_ID"
-category      = "Retroalimentacion"
-category_id   = "REEMPLAZA_CON_CATEGORY_ID"
-mapping       = "pathname"
+repo_id       = "R_kgDOSBrsnQ"
+mapping       = "number"
+term          = "1"
 reactions     = "1"
 emit_metadata = "0"
 theme_light   = "light"

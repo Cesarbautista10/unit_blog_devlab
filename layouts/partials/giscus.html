@@ -1,5 +1,4 @@
 {{ with .Site.Params.giscus }}
-{{ if and .repo .repo_id .category_id (ne .repo_id "REEMPLAZA_CON_REPO_ID") }}
 <section class="giscus-section mt-8 rounded-2xl border border-line bg-panel p-6 md:p-8">
   <h2 class="font-display text-xl font-bold text-ink mb-1">Retroalimentacion</h2>
   <div class="h-0.5 w-10 bg-orange-500 mb-6"></div>
@@ -9,14 +8,15 @@
     src="https://giscus.app/client.js"
     data-repo="{{ .repo }}"
     data-repo-id="{{ .repo_id }}"
-    data-category="{{ .category }}"
-    data-category-id="{{ .category_id }}"
     data-mapping="{{ .mapping | default "pathname" }}"
+    {{ if eq (.mapping | default "pathname") "number" }}data-term="{{ .term }}"{{ end }}
+    {{ with .category }}data-category="{{ . }}"{{ end }}
+    {{ with .category_id }}data-category-id="{{ . }}"{{ end }}
     data-strict="0"
     data-reactions-enabled="{{ .reactions | default "1" }}"
     data-emit-metadata="{{ .emit_metadata | default "0" }}"
-    data-input-position="top"
-    data-theme="{{ .theme_light | default "light" }}"
+    data-input-position="bottom"
+    data-theme="{{ .theme_light | default "preferred_color_scheme" }}"
     data-lang="es"
     crossorigin="anonymous"
     async>
@@ -43,16 +43,4 @@
     })();
   </script>
 </section>
-{{ else }}
-<section class="mt-8 rounded-2xl border border-dashed border-orange-300 bg-orange-50 p-6 text-sm text-orange-800">
-  <strong>Giscus pendiente de configurar.</strong>
-  Sigue estos pasos:
-  <ol class="mt-3 list-decimal space-y-1 pl-5">
-    <li>Activa <strong>Discussions</strong> en tu repositorio GitHub (Settings → Features → Discussions).</li>
-    <li>Crea una categoria llamada <strong>"Retroalimentacion"</strong> en Discussions.</li>
-    <li>Ve a <a href="https://giscus.app" class="underline font-semibold">giscus.app</a>, selecciona tu repo y copia los IDs.</li>
-    <li>Pega <code>repo_id</code> y <code>category_id</code> en <code>hugo.toml</code> bajo <code>[params.giscus]</code>.</li>
-  </ol>
-</section>
-{{ end }}
 {{ end }}
