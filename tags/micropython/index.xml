@@ -1,4 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Micropython on Documentación UNIT</title><link>https://cesarbautista10.github.io/unit_blog_devlab/tags/micropython/</link><description>Recent content in Micropython on Documentación UNIT</description><generator>Hugo</generator><language>es</language><lastBuildDate>Mon, 05 May 2025 10:00:00 -0500</lastBuildDate><atom:link href="https://cesarbautista10.github.io/unit_blog_devlab/tags/micropython/index.xml" rel="self" type="application/rss+xml"/><item><title>Demo 006 - Emotionally: cara reactiva con MicroPython en Pulsar C6</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/demo-006-documentacion-general-faq/</link><pubDate>Mon, 05 May 2025 10:00:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/demo-006-documentacion-general-faq/</guid><description>&lt;figure class="my-5 max-w-xl mx-auto"&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Micropython on Documentación UNIT</title><link>https://cesarbautista10.github.io/unit_blog_devlab/tags/micropython/</link><description>Recent content in Micropython on Documentación UNIT</description><generator>Hugo</generator><language>es</language><lastBuildDate>Mon, 13 Apr 2026 14:05:00 -0500</lastBuildDate><atom:link href="https://cesarbautista10.github.io/unit_blog_devlab/tags/micropython/index.xml" rel="self" type="application/rss+xml"/><item><title>MicroPython con Thonny IDE</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/micropython-thonny-setup/</link><pubDate>Mon, 13 Apr 2026 14:05:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/micropython-thonny-setup/</guid><description>&lt;p&gt;Aprende a configurar Thonny IDE para programar tus tarjetas de desarrollo UNIT Electronics con MicroPython. Una forma rápida y sencilla de usar Python en microcontroladores.&lt;/p&gt;
+&lt;h2 id="qué-es-micropython"&gt;¿Qué es MicroPython?&lt;/h2&gt;
+&lt;p&gt;MicroPython es una implementación eficiente de Python 3 optimizada para microcontroladores. Te permite usar la sintaxis familiar de Python para programar hardware.&lt;/p&gt;
+&lt;h2 id="instalación"&gt;Instalación&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Descarga Thonny IDE&lt;/strong&gt; desde &lt;a href="https://thonny.org"&gt;thonny.org&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Instala Thonny&lt;/strong&gt; en tu sistema operativo&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Descarga el firmware MicroPython&lt;/strong&gt; para tu tarjeta desde el sitio oficial&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flashea el firmware&lt;/strong&gt; usando esptool (para ESP32) o la herramienta apropiada&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="configuración-de-thonny"&gt;Configuración de Thonny&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Abre Thonny IDE&lt;/li&gt;
+&lt;li&gt;Ve a &lt;strong&gt;Herramientas &amp;gt; Opciones &amp;gt; Intérprete&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Selecciona &lt;strong&gt;MicroPython (ESP32)&lt;/strong&gt; o la opción correspondiente a tu tarjeta&lt;/li&gt;
+&lt;li&gt;Selecciona el &lt;strong&gt;puerto COM&lt;/strong&gt; correcto&lt;/li&gt;
+&lt;li&gt;Haz clic en &lt;strong&gt;Aceptar&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="primer-programa"&gt;Primer programa&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; machine &lt;span style="color:#f92672"&gt;import&lt;/span&gt; Pin
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; time
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;led &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Pin(&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;, Pin&lt;span style="color:#f92672"&gt;.&lt;/span&gt;OUT)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; led&lt;span style="color:#f92672"&gt;.&lt;/span&gt;value(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; time&lt;span style="color:#f92672"&gt;.&lt;/span&gt;sleep(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; led&lt;span style="color:#f92672"&gt;.&lt;/span&gt;value(&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; time&lt;span style="color:#f92672"&gt;.&lt;/span&gt;sleep(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;¡Ya puedes programar en Python!&lt;/p&gt;</description></item><item><title>Demo 006 - Emotionally: cara reactiva con MicroPython en Pulsar C6</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/demo-006-documentacion-general-faq/</link><pubDate>Mon, 05 May 2025 10:00:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/demo-006-documentacion-general-faq/</guid><description>&lt;figure class="my-5 max-w-xl mx-auto"&gt;
  &lt;img
  src="https://raw.githubusercontent.com/UNIT-Electronics-MX/unit_emotionally_pulsar_c6_mp/refs/heads/main/hardware/resources/14.gif"
  alt="Demo Emotionally en ejecucion"

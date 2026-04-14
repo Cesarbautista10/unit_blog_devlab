@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Devlab on Documentación UNIT</title><link>https://cesarbautista10.github.io/unit_blog_devlab/tags/devlab/</link><description>Recent content in Devlab on Documentación UNIT</description><generator>Hugo</generator><language>es</language><lastBuildDate>Mon, 13 Apr 2026 14:50:00 -0500</lastBuildDate><atom:link href="https://cesarbautista10.github.io/unit_blog_devlab/tags/devlab/index.xml" rel="self" type="application/rss+xml"/><item><title>Ecosistema DevLab</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/devlab-ecosystem/</link><pubDate>Mon, 13 Apr 2026 14:50:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/devlab-ecosystem/</guid><description>&lt;p&gt;El &lt;strong&gt;Ecosistema DevLab&lt;/strong&gt; es un sistema modular de hardware que simplifica el prototipado electrónico mediante conectores estandarizados, permitiendo conexiones rápidas sin soldadura.&lt;/p&gt;
+&lt;h2 id="características-principales"&gt;Características principales&lt;/h2&gt;
+&lt;h3 id="-conector-devlab"&gt;🔌 Conector DevLab&lt;/h3&gt;
+&lt;p&gt;El conector DevLab es un sistema de 4 pines que incluye:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;VCC&lt;/strong&gt; (3.3V o 5V según el módulo)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GND&lt;/strong&gt; (tierra)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SDA&lt;/strong&gt; (I2C datos)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SCL&lt;/strong&gt; (I2C reloj)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="-ventajas-del-sistema-modular"&gt;🧩 Ventajas del sistema modular&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ &lt;strong&gt;Plug-and-play&lt;/strong&gt;: No requiere soldadura&lt;/li&gt;
+&lt;li&gt;✅ &lt;strong&gt;Daisy-chain&lt;/strong&gt;: Conecta múltiples módulos en cadena&lt;/li&gt;
+&lt;li&gt;✅ &lt;strong&gt;Compatibilidad I2C&lt;/strong&gt;: Compatible con QWIIC/Stemma QT&lt;/li&gt;
+&lt;li&gt;✅ &lt;strong&gt;Rápido prototipado&lt;/strong&gt;: Cambia módulos en segundos&lt;/li&gt;
+&lt;li&gt;✅ &lt;strong&gt;Reutilizable&lt;/strong&gt;: Los módulos se pueden usar en múltiples proyectos&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="categorías-de-productos"&gt;Categorías de productos&lt;/h2&gt;
+&lt;h3 id="tarjetas-de-desarrollo"&gt;Tarjetas de desarrollo&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;ESP32 DevLab&lt;/strong&gt;: Microcontrolador WiFi/Bluetooth con conector DevLab&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CH552 Multi-Protocol&lt;/strong&gt;: Programador USB multi-función&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PY32 DevLab&lt;/strong&gt;: ARM Cortex-M0+ ultra económico&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AVR DevLab&lt;/strong&gt;: Basado en ATmega328P compatible Arduino&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="módulos-sensores"&gt;Módulos sensores&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Sensor de temperatura y humedad (DHT22)&lt;/li&gt;
+&lt;li&gt;Sensor de presión barométrica (BMP280)&lt;/li&gt;
+&lt;li&gt;Sensor de luz ambiente (BH1750)&lt;/li&gt;
+&lt;li&gt;Acelerómetro/giroscopio (MPU6050)&lt;/li&gt;
+&lt;li&gt;Sensor de distancia ultrasónico&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="módulos-actuadores"&gt;Módulos actuadores&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Display OLED (128x64)&lt;/li&gt;
+&lt;li&gt;Matriz LED 8x8&lt;/li&gt;
+&lt;li&gt;Relé de 5V&lt;/li&gt;
+&lt;li&gt;Servomotor&lt;/li&gt;
+&lt;li&gt;Motor DC con driver&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="módulos-de-comunicación"&gt;Módulos de comunicación&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Módulo WiFi (ESP-01)&lt;/li&gt;
+&lt;li&gt;Bluetooth HC-05&lt;/li&gt;
+&lt;li&gt;NRF24L01 (2.4GHz)&lt;/li&gt;
+&lt;li&gt;LoRa SX1278&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="ejemplo-de-conexión"&gt;Ejemplo de conexión&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;┌──────────────┐ DevLab ┌──────────────┐ DevLab ┌──────────────┐
+│ ESP32 │──────────────│ BMP280 │──────────────│ OLED │
+│ DevLab │ Conector │ (Sensor) │ Conector │ Display │
+└──────────────┘ └──────────────┘ └──────────────┘
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Todos los dispositivos comparten el bus I2C y la alimentación.&lt;/p&gt;</description></item></channel></rss>

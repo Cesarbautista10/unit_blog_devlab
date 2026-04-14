@@ -1,1 +1,109 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Comunicacion on Documentación UNIT</title><link>https://cesarbautista10.github.io/unit_blog_devlab/modulos/comunicacion/</link><description>Recent content in Comunicacion on Documentación UNIT</description><generator>Hugo</generator><language>es</language><lastBuildDate>Mon, 13 Apr 2026 12:30:00 -0500</lastBuildDate><atom:link href="https://cesarbautista10.github.io/unit_blog_devlab/modulos/comunicacion/index.xml" rel="self" type="application/rss+xml"/><item><title>Demo 005 - Nuevas caracteristicas del dispositivo</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/demo-005-nuevas-caracteristicas-dispositivo/</link><pubDate>Mon, 13 Apr 2026 12:30:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/demo-005-nuevas-caracteristicas-dispositivo/</guid><description>&lt;p&gt;Documento pensado para resolver preguntas operativas al momento.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Comunicacion on Documentación UNIT</title><link>https://cesarbautista10.github.io/unit_blog_devlab/modulos/comunicacion/</link><description>Recent content in Comunicacion on Documentación UNIT</description><generator>Hugo</generator><language>es</language><lastBuildDate>Mon, 13 Apr 2026 14:40:00 -0500</lastBuildDate><atom:link href="https://cesarbautista10.github.io/unit_blog_devlab/modulos/comunicacion/index.xml" rel="self" type="application/rss+xml"/><item><title>Comunicación I2C</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/i2c-communication/</link><pubDate>Mon, 13 Apr 2026 14:40:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/i2c-communication/</guid><description>&lt;p&gt;I2C (Inter-Integrated Circuit) es un protocolo de comunicación serie síncrono que utiliza solo 2 líneas: SDA (datos) y SCL (reloj).&lt;/p&gt;
+&lt;h2 id="scanner-i2c-arduino"&gt;Scanner I2C (Arduino)&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;Wire.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;setup&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.begin(&lt;span style="color:#ae81ff"&gt;115200&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Wire.begin();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.println(&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;\n&lt;/span&gt;&lt;span style="color:#e6db74"&gt;Escaneando bus I2C...&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; byte count &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt;(byte i &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;8&lt;/span&gt;; i &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;120&lt;/span&gt;; i&lt;span style="color:#f92672"&gt;++&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Wire.beginTransmission(i);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt;(Wire.endTransmission() &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.print(&lt;span style="color:#e6db74"&gt;&amp;#34;Dispositivo encontrado: 0x&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.println(i, HEX);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; count&lt;span style="color:#f92672"&gt;++&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt;(count &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;) Serial.println(&lt;span style="color:#e6db74"&gt;&amp;#34;No se encontraron dispositivos&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;else&lt;/span&gt; Serial.printf(&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;\n&lt;/span&gt;&lt;span style="color:#e6db74"&gt;Total: %d dispositivo(s)&amp;#34;&lt;/span&gt;, count);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;loop&lt;/span&gt;() {}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="leer-sensor-i2c-bmp280"&gt;Leer sensor I2C (BMP280)&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;Wire.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;Adafruit_BMP280.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Adafruit_BMP280 bmp;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;setup&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.begin(&lt;span style="color:#ae81ff"&gt;115200&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt;(&lt;span style="color:#f92672"&gt;!&lt;/span&gt;bmp.begin(&lt;span style="color:#ae81ff"&gt;0x76&lt;/span&gt;)) { &lt;span style="color:#75715e"&gt;// Dirección I2C del BMP280
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.println(&lt;span style="color:#e6db74"&gt;&amp;#34;Error: BMP280 no encontrado&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt;(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;loop&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;float&lt;/span&gt; temp &lt;span style="color:#f92672"&gt;=&lt;/span&gt; bmp.readTemperature();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;float&lt;/span&gt; pres &lt;span style="color:#f92672"&gt;=&lt;/span&gt; bmp.readPressure() &lt;span style="color:#f92672"&gt;/&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;100.0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.printf(&lt;span style="color:#e6db74"&gt;&amp;#34;Temperatura: %.1f°C | Presión: %.1f hPa&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;\n&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;, temp, pres);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; delay(&lt;span style="color:#ae81ff"&gt;2000&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="micropython-i2c"&gt;MicroPython I2C&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; machine &lt;span style="color:#f92672"&gt;import&lt;/span&gt; Pin, I2C
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; time
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Inicializar I2C&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;i2c &lt;span style="color:#f92672"&gt;=&lt;/span&gt; I2C(&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, scl&lt;span style="color:#f92672"&gt;=&lt;/span&gt;Pin(&lt;span style="color:#ae81ff"&gt;22&lt;/span&gt;), sda&lt;span style="color:#f92672"&gt;=&lt;/span&gt;Pin(&lt;span style="color:#ae81ff"&gt;21&lt;/span&gt;), freq&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;100000&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Escanear dispositivos&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;devices &lt;span style="color:#f92672"&gt;=&lt;/span&gt; i2c&lt;span style="color:#f92672"&gt;.&lt;/span&gt;scan()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(&lt;span style="color:#e6db74"&gt;&amp;#34;Dispositivos encontrados:&amp;#34;&lt;/span&gt;, [hex(d) &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; d &lt;span style="color:#f92672"&gt;in&lt;/span&gt; devices])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Leer de un dispositivo (ejemplo: 0x76)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0x76&lt;/span&gt; &lt;span style="color:#f92672"&gt;in&lt;/span&gt; devices:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; data &lt;span style="color:#f92672"&gt;=&lt;/span&gt; i2c&lt;span style="color:#f92672"&gt;.&lt;/span&gt;readfrom(&lt;span style="color:#ae81ff"&gt;0x76&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;6&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; print(&lt;span style="color:#e6db74"&gt;&amp;#34;Datos:&amp;#34;&lt;/span&gt;, data)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="conectar-múltiples-dispositivos"&gt;Conectar múltiples dispositivos&lt;/h2&gt;
+&lt;p&gt;Todos los dispositivos I2C van en paralelo:&lt;/p&gt;</description></item><item><title>Conector QWIIC - Comunicación I2C</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/qwiic-i2c-connector/</link><pubDate>Mon, 13 Apr 2026 14:15:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/qwiic-i2c-connector/</guid><description>&lt;p&gt;El conector QWIIC es un estándar de conexión rápida que utiliza comunicación I2C para conectar múltiples sensores y módulos sin necesidad de soldadura.&lt;/p&gt;
+&lt;h2 id="especificaciones-del-conector"&gt;Especificaciones del conector&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tipo&lt;/strong&gt;: JST SH 1.0mm 4 pines&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Voltaje&lt;/strong&gt;: 3.3V&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Protocolo&lt;/strong&gt;: I2C&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pinout estándar&lt;/strong&gt;:
+&lt;ol&gt;
+&lt;li&gt;GND (Negro)&lt;/li&gt;
+&lt;li&gt;3.3V (Rojo)&lt;/li&gt;
+&lt;li&gt;SDA (Azul)&lt;/li&gt;
+&lt;li&gt;SCL (Amarillo)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="ventajas-del-sistema-qwiic"&gt;Ventajas del sistema QWIIC&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ Conexión rápida sin soldadura&lt;/li&gt;
+&lt;li&gt;✅ Polaridad protegida (no se puede conectar al revés)&lt;/li&gt;
+&lt;li&gt;✅ Daisy-chain (conectar múltiples dispositivos)&lt;/li&gt;
+&lt;li&gt;✅ Compatible con SparkFun Qwiic y Adafruit STEMMA QT&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="uso-con-arduino"&gt;Uso con Arduino&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;Wire.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;setup&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.begin(&lt;span style="color:#ae81ff"&gt;115200&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Wire.begin(); &lt;span style="color:#75715e"&gt;// Inicializa I2C
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// Escanea dispositivos I2C
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.println(&lt;span style="color:#e6db74"&gt;&amp;#34;Escaneando...&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt;(byte address &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;; address &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;127&lt;/span&gt;; address&lt;span style="color:#f92672"&gt;++&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Wire.beginTransmission(address);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; byte error &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Wire.endTransmission();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (error &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.print(&lt;span style="color:#e6db74"&gt;&amp;#34;Dispositivo encontrado en 0x&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.println(address, HEX);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;loop&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// Tu código aquí
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="conexión-de-múltiples-dispositivos"&gt;Conexión de múltiples dispositivos&lt;/h2&gt;
+&lt;p&gt;Puedes conectar múltiples módulos en serie (daisy-chain) siempre que:&lt;/p&gt;</description></item></channel></rss>

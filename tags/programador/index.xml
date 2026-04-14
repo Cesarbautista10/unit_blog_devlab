@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Programador on Documentación UNIT</title><link>https://cesarbautista10.github.io/unit_blog_devlab/tags/programador/</link><description>Recent content in Programador on Documentación UNIT</description><generator>Hugo</generator><language>es</language><lastBuildDate>Mon, 13 Apr 2026 15:05:00 -0500</lastBuildDate><atom:link href="https://cesarbautista10.github.io/unit_blog_devlab/tags/programador/index.xml" rel="self" type="application/rss+xml"/><item><title>CH552 Multi-Protocol - Modo AVR</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/ch552-avr-mode/</link><pubDate>Mon, 13 Apr 2026 15:05:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/ch552-avr-mode/</guid><description>&lt;p&gt;El &lt;strong&gt;CH552 Multi-Protocol&lt;/strong&gt; puede funcionar como programador AVR (USBasp), compatible con Arduino IDE y avrdude.&lt;/p&gt;
+&lt;h2 id="flashear-firmware-avr"&gt;Flashear firmware AVR&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Descarga el firmware AVR para CH552&lt;/li&gt;
+&lt;li&gt;Usa WCHISPStudio para flashear el CH552&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Linux&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;wchisptool -f ch552_usbasp.bin
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Windows&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Usar WCHISPStudio GUI&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="conexiones-programador-avr"&gt;Conexiones programador AVR&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;CH552 AVR Mode ATmega328P
+══════════════ ═══════════
+MISO ────→ MISO (D12)
+MOSI ────→ MOSI (D11)
+SCK ────→ SCK (D13)
+RESET ────→ RESET
+GND ────→ GND
+VCC ────→ VCC (5V)
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="configurar-arduino-ide"&gt;Configurar Arduino IDE&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Ve a &lt;strong&gt;Herramientas → Programador&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Selecciona &lt;strong&gt;&amp;ldquo;USBasp&amp;rdquo;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Conecta tu placa AVR&lt;/li&gt;
+&lt;li&gt;Usa &lt;strong&gt;Sketch → Subir usando programador&lt;/strong&gt; (Ctrl+Shift+U)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="usar-con-avrdude"&gt;Usar con avrdude&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Leer firma del chip&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;avrdude -c usbasp -p m328p
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Flashear archivo .hex&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;avrdude -c usbasp -p m328p -U flash:w:firmware.hex
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Leer fusibles&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;avrdude -c usbasp -p m328p -U lfuse:r:-:h -U hfuse:r:-:h
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Escribir fusibles (ejemplo: habilitar clock externo 16MHz)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;avrdude -c usbasp -p m328p -U lfuse:w:0xFF:m -U hfuse:w:0xDE:m
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="instalar-drivers-windows"&gt;Instalar drivers (Windows)&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Descarga &lt;a href="https://zadig.akeo.ie/"&gt;Zadig&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Conecta el CH552 en modo AVR&lt;/li&gt;
+&lt;li&gt;Selecciona dispositivo &amp;ldquo;USBasp&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Instala driver &lt;strong&gt;libusbK&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="drivers-linux"&gt;Drivers Linux&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Ubuntu/Debian&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install libusb-dev
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Agregar reglas udev&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo &lt;span style="color:#e6db74"&gt;&amp;#39;SUBSYSTEM==&amp;#34;usb&amp;#34;, ATTR{idVendor}==&amp;#34;16c0&amp;#34;, ATTR{idProduct}==&amp;#34;05dc&amp;#34;, MODE=&amp;#34;0666&amp;#34;&amp;#39;&lt;/span&gt; | sudo tee /etc/udev/rules.d/99-usbasp.rules
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo udevadm control --reload
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="placas-avr-soportadas"&gt;Placas AVR soportadas&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ ATmega328P (Arduino Uno)&lt;/li&gt;
+&lt;li&gt;✅ ATmega2560 (Arduino Mega)&lt;/li&gt;
+&lt;li&gt;✅ ATtiny85, ATtiny13&lt;/li&gt;
+&lt;li&gt;✅ ATmega32U4 (Arduino Leonardo)&lt;/li&gt;
+&lt;li&gt;✅ ATmega8, ATmega16&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="solución-de-problemas"&gt;Solución de problemas&lt;/h2&gt;
+&lt;h3 id="error-device-not-found"&gt;Error: device not found&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Verifica que el dispositivo se detecte&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;lsusb | grep -i usbasp
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Deberías ver: Bus XXX Device XXX: ID 16c0:05dc Van Ooijen Technische Informatica shared ID for use with libusb&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="error-initialization-failed"&gt;Error: initialization failed&lt;/h3&gt;
+&lt;p&gt;Reduce la velocidad del programador:&lt;/p&gt;</description></item></channel></rss>

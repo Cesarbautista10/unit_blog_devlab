@@ -1,4 +1,180 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Documentacion-General on Documentación UNIT</title><link>https://cesarbautista10.github.io/unit_blog_devlab/tipos/documentacion-general/</link><description>Recent content in Documentacion-General on Documentación UNIT</description><generator>Hugo</generator><language>es</language><lastBuildDate>Mon, 05 May 2025 10:00:00 -0500</lastBuildDate><atom:link href="https://cesarbautista10.github.io/unit_blog_devlab/tipos/documentacion-general/index.xml" rel="self" type="application/rss+xml"/><item><title>Demo 006 - Emotionally: cara reactiva con MicroPython en Pulsar C6</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/demo-006-documentacion-general-faq/</link><pubDate>Mon, 05 May 2025 10:00:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/demo-006-documentacion-general-faq/</guid><description>&lt;figure class="my-5 max-w-xl mx-auto"&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Documentacion-General on Documentación UNIT</title><link>https://cesarbautista10.github.io/unit_blog_devlab/tipos/documentacion-general/</link><description>Recent content in Documentacion-General on Documentación UNIT</description><generator>Hugo</generator><language>es</language><lastBuildDate>Mon, 13 Apr 2026 14:55:00 -0500</lastBuildDate><atom:link href="https://cesarbautista10.github.io/unit_blog_devlab/tipos/documentacion-general/index.xml" rel="self" type="application/rss+xml"/><item><title>Cocket Nova - SDK Docker</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/cocket-nova/</link><pubDate>Mon, 13 Apr 2026 14:55:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/cocket-nova/</guid><description>&lt;p&gt;&lt;strong&gt;Cocket Nova&lt;/strong&gt; es un SDK dockerizado que proporciona un entorno de compilación completo para generar firmware sin instalar toolchains localmente.&lt;/p&gt;
+&lt;h2 id="instalación-de-docker"&gt;Instalación de Docker&lt;/h2&gt;
+&lt;h3 id="linux"&gt;Linux&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install docker.io
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo usermod -aG docker $USER
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Cerrar sesión y volver a iniciar&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="windowsmac"&gt;Windows/Mac&lt;/h3&gt;
+&lt;p&gt;Descarga e instala &lt;a href="https://www.docker.com/products/docker-desktop"&gt;Docker Desktop&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="descargar-imagen-cocket-nova"&gt;Descargar imagen Cocket Nova&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker pull unitelectronics/cocket-nova:latest
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="compilar-proyecto"&gt;Compilar proyecto&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Estructura del proyecto&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mi-proyecto/
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├── src/
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├── include/
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;└── Makefile
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Compilar usando Cocket Nova&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -v &lt;span style="color:#66d9ef"&gt;$(&lt;/span&gt;pwd&lt;span style="color:#66d9ef"&gt;)&lt;/span&gt;:/project unitelectronics/cocket-nova:latest make
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# El archivo .bin se genera en la carpeta actual&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="ejemplo-completo"&gt;Ejemplo completo&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Crear proyecto&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir blink-project &lt;span style="color:#f92672"&gt;&amp;amp;&amp;amp;&lt;/span&gt; cd blink-project
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Crear código fuente&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat &amp;gt; main.c &lt;span style="color:#e6db74"&gt;&amp;lt;&amp;lt; &amp;#39;CODE&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;#include &amp;lt;ch32v00x.h&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;void delay(uint32_t ms) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; for(uint32_t i = 0; i &amp;lt; ms * 1000; i++) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; __NOP();
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;int main(void) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; GPIO_InitTypeDef GPIO_InitStructure;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE);
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; GPIO_Init(GPIOD, &amp;amp;GPIO_InitStructure);
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; while(1) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; GPIO_SetBits(GPIOD, GPIO_Pin_0);
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; delay(500);
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; GPIO_ResetBits(GPIOD, GPIO_Pin_0);
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; delay(500);
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;CODE&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Compilar&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -v &lt;span style="color:#66d9ef"&gt;$(&lt;/span&gt;pwd&lt;span style="color:#66d9ef"&gt;)&lt;/span&gt;:/project unitelectronics/cocket-nova:latest
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Flashear (requiere WCHISPTool)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;wchisptool -f firmware.bin
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="ventajas-de-cocket-nova"&gt;Ventajas de Cocket Nova&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ &lt;strong&gt;Sin instalación de toolchain&lt;/strong&gt;: Todo está en el contenedor&lt;/li&gt;
+&lt;li&gt;✅ &lt;strong&gt;Reproducible&lt;/strong&gt;: Misma versión de compilador siempre&lt;/li&gt;
+&lt;li&gt;✅ &lt;strong&gt;Multi-plataforma&lt;/strong&gt;: Funciona en Linux, Windows, Mac&lt;/li&gt;
+&lt;li&gt;✅ &lt;strong&gt;Actualizable&lt;/strong&gt;: &lt;code&gt;docker pull&lt;/code&gt; para nueva versión&lt;/li&gt;
+&lt;li&gt;✅ &lt;strong&gt;Aislado&lt;/strong&gt;: No contamina el sistema host&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="toolchains-incluidos"&gt;Toolchains incluidos&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ARM GCC (Cortex-M0/M0+/M3/M4)&lt;/li&gt;
+&lt;li&gt;RISC-V GCC (CH32V, GD32V)&lt;/li&gt;
+&lt;li&gt;SDCC (8051, CH552)&lt;/li&gt;
+&lt;li&gt;AVR GCC (ATmega)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="comandos-útiles"&gt;Comandos útiles&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Ver versión de compiladores&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm unitelectronics/cocket-nova:latest arm-none-eabi-gcc --version
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Compilar con opciones&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -v &lt;span style="color:#66d9ef"&gt;$(&lt;/span&gt;pwd&lt;span style="color:#66d9ef"&gt;)&lt;/span&gt;:/project unitelectronics/cocket-nova:latest make OPTIMIZE&lt;span style="color:#f92672"&gt;=&lt;/span&gt;-Os
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Limpiar proyecto&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -v &lt;span style="color:#66d9ef"&gt;$(&lt;/span&gt;pwd&lt;span style="color:#66d9ef"&gt;)&lt;/span&gt;:/project unitelectronics/cocket-nova:latest make clean
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Ejecutar shell interactivo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it -v &lt;span style="color:#66d9ef"&gt;$(&lt;/span&gt;pwd&lt;span style="color:#66d9ef"&gt;)&lt;/span&gt;:/project unitelectronics/cocket-nova:latest bash
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="actualizar-cocket-nova"&gt;Actualizar Cocket Nova&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Descargar última versión&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker pull unitelectronics/cocket-nova:latest
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Ver cambios&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker images unitelectronics/cocket-nova
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>PyOCD - Depuración ARM Cortex-M</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/pyocd-debugging/</link><pubDate>Mon, 13 Apr 2026 14:45:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/pyocd-debugging/</guid><description>&lt;p&gt;PyOCD es una herramienta de línea de comandos y librería Python para depurar y programar microcontroladores ARM Cortex-M usando sondas CMSIS-DAP/DAPLink.&lt;/p&gt;
+&lt;h2 id="instalación"&gt;Instalación&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Instalar PyOCD&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install pyocd
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Verificar instalación&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyocd --version
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Listar dispositivos conectados&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyocd list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="instalar-packs-de-soporte"&gt;Instalar packs de soporte&lt;/h2&gt;
+&lt;p&gt;Para microcontroladores específicos:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Buscar pack&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyocd pack find stm32
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Instalar pack&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyocd pack install stm32f4
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Para PY32F003&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyocd pack install puya
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="flashear-firmware"&gt;Flashear firmware&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Flashear archivo .hex&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyocd flash -t stm32f103 firmware.hex
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Flashear archivo .bin (especificar dirección)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyocd flash -t stm32f103 --base-address 0x08000000 firmware.bin
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Auto-detectar target&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyocd flash firmware.hex
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="depuración-con-gdb"&gt;Depuración con GDB&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Iniciar servidor GDB&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyocd gdbserver -t stm32f103
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# En otra terminal, conectar GDB&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;arm-none-eabi-gdb firmware.elf
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;(&lt;/span&gt;gdb&lt;span style="color:#f92672"&gt;)&lt;/span&gt; target remote :3333
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;(&lt;/span&gt;gdb&lt;span style="color:#f92672"&gt;)&lt;/span&gt; load
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;(&lt;/span&gt;gdb&lt;span style="color:#f92672"&gt;)&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;continue&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="integración-con-vs-code"&gt;Integración con VS Code&lt;/h2&gt;
+&lt;p&gt;Archivo &lt;code&gt;.vscode/launch.json&lt;/code&gt;:&lt;/p&gt;</description></item><item><title>MicroPython con Thonny IDE</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/micropython-thonny-setup/</link><pubDate>Mon, 13 Apr 2026 14:05:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/micropython-thonny-setup/</guid><description>&lt;p&gt;Aprende a configurar Thonny IDE para programar tus tarjetas de desarrollo UNIT Electronics con MicroPython. Una forma rápida y sencilla de usar Python en microcontroladores.&lt;/p&gt;
+&lt;h2 id="qué-es-micropython"&gt;¿Qué es MicroPython?&lt;/h2&gt;
+&lt;p&gt;MicroPython es una implementación eficiente de Python 3 optimizada para microcontroladores. Te permite usar la sintaxis familiar de Python para programar hardware.&lt;/p&gt;
+&lt;h2 id="instalación"&gt;Instalación&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Descarga Thonny IDE&lt;/strong&gt; desde &lt;a href="https://thonny.org"&gt;thonny.org&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Instala Thonny&lt;/strong&gt; en tu sistema operativo&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Descarga el firmware MicroPython&lt;/strong&gt; para tu tarjeta desde el sitio oficial&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flashea el firmware&lt;/strong&gt; usando esptool (para ESP32) o la herramienta apropiada&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="configuración-de-thonny"&gt;Configuración de Thonny&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Abre Thonny IDE&lt;/li&gt;
+&lt;li&gt;Ve a &lt;strong&gt;Herramientas &amp;gt; Opciones &amp;gt; Intérprete&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Selecciona &lt;strong&gt;MicroPython (ESP32)&lt;/strong&gt; o la opción correspondiente a tu tarjeta&lt;/li&gt;
+&lt;li&gt;Selecciona el &lt;strong&gt;puerto COM&lt;/strong&gt; correcto&lt;/li&gt;
+&lt;li&gt;Haz clic en &lt;strong&gt;Aceptar&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="primer-programa"&gt;Primer programa&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; machine &lt;span style="color:#f92672"&gt;import&lt;/span&gt; Pin
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; time
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;led &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Pin(&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;, Pin&lt;span style="color:#f92672"&gt;.&lt;/span&gt;OUT)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; led&lt;span style="color:#f92672"&gt;.&lt;/span&gt;value(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; time&lt;span style="color:#f92672"&gt;.&lt;/span&gt;sleep(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; led&lt;span style="color:#f92672"&gt;.&lt;/span&gt;value(&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; time&lt;span style="color:#f92672"&gt;.&lt;/span&gt;sleep(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;¡Ya puedes programar en Python!&lt;/p&gt;</description></item><item><title>Arduino IDE</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/arduino-ide-setup/</link><pubDate>Mon, 13 Apr 2026 14:00:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/arduino-ide-setup/</guid><description>&lt;p&gt;Guía completa para configurar Arduino IDE y comenzar a programar las tarjetas de desarrollo UNIT Electronics. Aprende a instalar las herramientas necesarias y configurar tu entorno de desarrollo.&lt;/p&gt;
+&lt;h2 id="requisitos"&gt;Requisitos&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Arduino IDE 2.0 o superior&lt;/li&gt;
+&lt;li&gt;Conexión a internet&lt;/li&gt;
+&lt;li&gt;Cable USB apropiado&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="instalación-paso-a-paso"&gt;Instalación paso a paso&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Descarga Arduino IDE&lt;/strong&gt; desde &lt;a href="https://www.arduino.cc/en/software"&gt;arduino.cc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Instala el software&lt;/strong&gt; siguiendo las instrucciones para tu sistema operativo&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Abre Arduino IDE&lt;/strong&gt; y ve a Archivo &amp;gt; Preferencias&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Agrega el URL&lt;/strong&gt; del gestor de tarjetas en &amp;ldquo;URLs Adicionales de Gestor de Tarjetas&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Abre el Gestor de Tarjetas&lt;/strong&gt; desde Herramientas &amp;gt; Placa &amp;gt; Gestor de Tarjetas&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Busca e instala&lt;/strong&gt; el paquete de tarjetas UNIT Electronics&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="configuración"&gt;Configuración&lt;/h2&gt;
+&lt;p&gt;Una vez instalado el paquete:&lt;/p&gt;</description></item><item><title>Demo 006 - Emotionally: cara reactiva con MicroPython en Pulsar C6</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/demo-006-documentacion-general-faq/</link><pubDate>Mon, 05 May 2025 10:00:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/demo-006-documentacion-general-faq/</guid><description>&lt;figure class="my-5 max-w-xl mx-auto"&gt;
  &lt;img
  src="https://raw.githubusercontent.com/UNIT-Electronics-MX/unit_emotionally_pulsar_c6_mp/refs/heads/main/hardware/resources/14.gif"
  alt="Demo Emotionally en ejecucion"

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Arduino on Documentación UNIT</title><link>https://cesarbautista10.github.io/unit_blog_devlab/tags/arduino/</link><description>Recent content in Arduino on Documentación UNIT</description><generator>Hugo</generator><language>es</language><lastBuildDate>Mon, 13 Apr 2026 15:00:00 -0500</lastBuildDate><atom:link href="https://cesarbautista10.github.io/unit_blog_devlab/tags/arduino/index.xml" rel="self" type="application/rss+xml"/><item><title>Programación PY32F003 con Arduino IDE</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/py32f003-programming/</link><pubDate>Mon, 13 Apr 2026 15:00:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/py32f003-programming/</guid><description>&lt;p&gt;El &lt;strong&gt;PY32F003&lt;/strong&gt; es un microcontrolador ARM Cortex-M0+ de Puya Semiconductor, ultra económico y compatible con Arduino IDE.&lt;/p&gt;
+&lt;h2 id="características-py32f003l24d6tr"&gt;Características PY32F003L24D6TR&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;🧠 &lt;strong&gt;CPU&lt;/strong&gt;: ARM Cortex-M0+ @ 24MHz&lt;/li&gt;
+&lt;li&gt;💾 &lt;strong&gt;Flash&lt;/strong&gt;: 20KB&lt;/li&gt;
+&lt;li&gt;🧮 &lt;strong&gt;RAM&lt;/strong&gt;: 3KB&lt;/li&gt;
+&lt;li&gt;📌 &lt;strong&gt;GPIO&lt;/strong&gt;: 13 pines&lt;/li&gt;
+&lt;li&gt;🔌 &lt;strong&gt;Periféricos&lt;/strong&gt;: UART, I2C, SPI, ADC (12-bit)&lt;/li&gt;
+&lt;li&gt;💰 &lt;strong&gt;Precio&lt;/strong&gt;: ~$0.10 USD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="instalación-arduino-ide"&gt;Instalación Arduino IDE&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Abre Arduino IDE&lt;/li&gt;
+&lt;li&gt;Ve a &lt;strong&gt;Archivo → Preferencias&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Agrega esta URL en &amp;ldquo;Gestor de URLs Adicionales&amp;rdquo;:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;https://github.com/py32duino/platform-py32f0.git
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start="4"&gt;
+&lt;li&gt;Ve a &lt;strong&gt;Herramientas → Placa → Gestor de placas&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Busca &amp;ldquo;PY32&amp;rdquo; e instala el paquete&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="conexiones-ch552--py32f003"&gt;Conexiones CH552 → PY32F003&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;CH552 (CMSIS-DAP) PY32F003
+═════════════════ ════════
+SWDIO ────→ SWDIO (PA13)
+SWDCLK ────→ SWDCLK (PA14)
+GND ────→ GND
+3.3V ────→ VDD
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="ejemplo-blink-arduino"&gt;Ejemplo Blink (Arduino)&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// PY32F003 Blink LED
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#define LED_PIN PA0
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;setup&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; pinMode(LED_PIN, OUTPUT);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;loop&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; digitalWrite(LED_PIN, HIGH);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; delay(&lt;span style="color:#ae81ff"&gt;1000&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; digitalWrite(LED_PIN, LOW);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; delay(&lt;span style="color:#ae81ff"&gt;1000&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="ejemplo-serial"&gt;Ejemplo Serial&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;setup&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.begin(&lt;span style="color:#ae81ff"&gt;115200&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;loop&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.println(&lt;span style="color:#e6db74"&gt;&amp;#34;Hola desde PY32F003!&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; delay(&lt;span style="color:#ae81ff"&gt;1000&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="ejemplo-adc"&gt;Ejemplo ADC&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#define ADC_PIN PA4
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;setup&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.begin(&lt;span style="color:#ae81ff"&gt;115200&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; pinMode(ADC_PIN, INPUT_ANALOG);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;loop&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; adcValue &lt;span style="color:#f92672"&gt;=&lt;/span&gt; analogRead(ADC_PIN);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;float&lt;/span&gt; voltage &lt;span style="color:#f92672"&gt;=&lt;/span&gt; (adcValue &lt;span style="color:#f92672"&gt;/&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;4095.0&lt;/span&gt;) &lt;span style="color:#f92672"&gt;*&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;3.3&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.print(&lt;span style="color:#e6db74"&gt;&amp;#34;ADC: &amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.print(adcValue);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.print(&lt;span style="color:#e6db74"&gt;&amp;#34; | Voltaje: &amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.print(voltage);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.println(&lt;span style="color:#e6db74"&gt;&amp;#34;V&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; delay(&lt;span style="color:#ae81ff"&gt;500&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="configurar-programador"&gt;Configurar programador&lt;/h2&gt;
+&lt;p&gt;En Arduino IDE:&lt;/p&gt;</description></item><item><title>Arduino IDE</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/arduino-ide-setup/</link><pubDate>Mon, 13 Apr 2026 14:00:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/arduino-ide-setup/</guid><description>&lt;p&gt;Guía completa para configurar Arduino IDE y comenzar a programar las tarjetas de desarrollo UNIT Electronics. Aprende a instalar las herramientas necesarias y configurar tu entorno de desarrollo.&lt;/p&gt;
+&lt;h2 id="requisitos"&gt;Requisitos&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Arduino IDE 2.0 o superior&lt;/li&gt;
+&lt;li&gt;Conexión a internet&lt;/li&gt;
+&lt;li&gt;Cable USB apropiado&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="instalación-paso-a-paso"&gt;Instalación paso a paso&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Descarga Arduino IDE&lt;/strong&gt; desde &lt;a href="https://www.arduino.cc/en/software"&gt;arduino.cc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Instala el software&lt;/strong&gt; siguiendo las instrucciones para tu sistema operativo&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Abre Arduino IDE&lt;/strong&gt; y ve a Archivo &amp;gt; Preferencias&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Agrega el URL&lt;/strong&gt; del gestor de tarjetas en &amp;ldquo;URLs Adicionales de Gestor de Tarjetas&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Abre el Gestor de Tarjetas&lt;/strong&gt; desde Herramientas &amp;gt; Placa &amp;gt; Gestor de Tarjetas&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Busca e instala&lt;/strong&gt; el paquete de tarjetas UNIT Electronics&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="configuración"&gt;Configuración&lt;/h2&gt;
+&lt;p&gt;Una vez instalado el paquete:&lt;/p&gt;</description></item></channel></rss>

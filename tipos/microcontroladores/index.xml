@@ -1,1 +1,152 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Microcontroladores on Documentación UNIT</title><link>https://cesarbautista10.github.io/unit_blog_devlab/tipos/microcontroladores/</link><description>Recent content in Microcontroladores on Documentación UNIT</description><generator>Hugo</generator><language>es</language><lastBuildDate>Mon, 13 Apr 2026 11:00:00 -0500</lastBuildDate><atom:link href="https://cesarbautista10.github.io/unit_blog_devlab/tipos/microcontroladores/index.xml" rel="self" type="application/rss+xml"/><item><title>Demo 002 - Base de microcontrolador para pruebas</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/demo-002-microcontrolador-base/</link><pubDate>Mon, 13 Apr 2026 11:00:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/demo-002-microcontrolador-base/</guid><description>&lt;p&gt;Este documento sirve como referencia base para soporte tecnico y puesta en marcha.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Microcontroladores on Documentación UNIT</title><link>https://cesarbautista10.github.io/unit_blog_devlab/tipos/microcontroladores/</link><description>Recent content in Microcontroladores on Documentación UNIT</description><generator>Hugo</generator><language>es</language><lastBuildDate>Mon, 13 Apr 2026 15:20:00 -0500</lastBuildDate><atom:link href="https://cesarbautista10.github.io/unit_blog_devlab/tipos/microcontroladores/index.xml" rel="self" type="application/rss+xml"/><item><title>STM32 - Programación ARM con CH552</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/stm32-programming/</link><pubDate>Mon, 13 Apr 2026 15:20:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/stm32-programming/</guid><description>&lt;p&gt;La familia &lt;strong&gt;STM32&lt;/strong&gt; de STMicroelectronics es la más popular de microcontroladores ARM Cortex-M, con miles de variantes.&lt;/p&gt;
+&lt;h2 id="stm32-blue-pill-stm32f103c8t6"&gt;STM32 Blue Pill (STM32F103C8T6)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;🧠 &lt;strong&gt;CPU&lt;/strong&gt;: ARM Cortex-M3 @ 72MHz&lt;/li&gt;
+&lt;li&gt;💾 &lt;strong&gt;Flash&lt;/strong&gt;: 64KB (muchos tienen 128KB)&lt;/li&gt;
+&lt;li&gt;🧮 &lt;strong&gt;RAM&lt;/strong&gt;: 20KB&lt;/li&gt;
+&lt;li&gt;📌 &lt;strong&gt;GPIO&lt;/strong&gt;: 37 pines&lt;/li&gt;
+&lt;li&gt;🔌 &lt;strong&gt;Periféricos&lt;/strong&gt;: 2× UART, 2× SPI, 2× I2C, USB, CAN&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="conexiones-ch552--stm32"&gt;Conexiones CH552 → STM32&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;CH552 (CMSIS-DAP) STM32F103
+══════════════════ ══════════
+SWDIO ────→ SWDIO (PA13)
+SWDCLK ────→ SWDCLK (PA14)
+GND ────→ GND
+3.3V ────→ 3.3V
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="programar-con-pyocd"&gt;Programar con PyOCD&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Instalar PyOCD&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install pyocd
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Instalar pack STM32&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyocd pack install stm32f1
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Flashear firmware&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyocd flash -t stm32f103c8 firmware.hex
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Otras variantes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyocd flash -t stm32f401 firmware.hex
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyocd flash -t stm32f407 firmware.hex
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="arduino-ide-con-stm32"&gt;Arduino IDE con STM32&lt;/h2&gt;
+&lt;h3 id="instalar-stm32duino"&gt;Instalar STM32duino&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;Archivo → Preferencias → URLs Adicionales:
+https://github.com/stm32duino/BoardManagerFiles/raw/main/package_stmicroelectronics_index.json
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="configurar-placa"&gt;Configurar placa&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;Herramientas → Placa → STM32 boards → Generic STM32F1 series
+Herramientas → Board part number: BluePill F103C8
+Herramientas → Upload method: CMSIS-DAP
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="ejemplo-blink"&gt;Ejemplo Blink&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;setup&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; pinMode(PC13, OUTPUT); &lt;span style="color:#75715e"&gt;// LED integrado
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;loop&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; digitalWrite(PC13, HIGH);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; delay(&lt;span style="color:#ae81ff"&gt;1000&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; digitalWrite(PC13, LOW);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; delay(&lt;span style="color:#ae81ff"&gt;1000&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="platformio-para-stm32"&gt;PlatformIO para STM32&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;platformio.ini&lt;/code&gt;:&lt;/p&gt;</description></item><item><title>RP2040 - ARM Firmware para CH552</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/rp2040-firmware/</link><pubDate>Mon, 13 Apr 2026 15:15:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/rp2040-firmware/</guid><description>&lt;p&gt;El &lt;strong&gt;RP2040&lt;/strong&gt; es el microcontrolador de Raspberry Pi, con dual-core ARM Cortex-M0+ @ 133MHz, ideal para proyectos avanzados.&lt;/p&gt;
+&lt;h2 id="características-rp2040"&gt;Características RP2040&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;🧠 &lt;strong&gt;CPU&lt;/strong&gt;: Dual ARM Cortex-M0+ @ 133MHz&lt;/li&gt;
+&lt;li&gt;💾 &lt;strong&gt;RAM&lt;/strong&gt;: 264KB SRAM&lt;/li&gt;
+&lt;li&gt;🔌 &lt;strong&gt;GPIO&lt;/strong&gt;: 30 pines multifunción&lt;/li&gt;
+&lt;li&gt;⚡ &lt;strong&gt;PIO&lt;/strong&gt;: Programable I/O (8 state machines)&lt;/li&gt;
+&lt;li&gt;📡 &lt;strong&gt;USB&lt;/strong&gt;: USB 1.1 device/host nativo&lt;/li&gt;
+&lt;li&gt;🔢 &lt;strong&gt;ADC&lt;/strong&gt;: 12-bit, 500ksps&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="conexiones-ch552--rp2040"&gt;Conexiones CH552 → RP2040&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;CH552 (SWD Mode) Raspberry Pi Pico
+═════════════════ ══════════════════
+SWDIO ────→ SWDIO (Pin 3)
+SWDCLK ────→ SWDCLK (Pin 4)
+GND ────→ GND (Pin 8)
+3.3V ────→ 3V3 (Pin 36)
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="programar-con-pyocd"&gt;Programar con PyOCD&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Instalar PyOCD&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install pyocd
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Instalar pack RP2040&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyocd pack install rp2040
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Flashear firmware .uf2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyocd flash -t rp2040 firmware.uf2
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Flashear .elf&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyocd flash -t rp2040 firmware.elf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="modo-uf2-sin-programador"&gt;Modo UF2 (sin programador)&lt;/h2&gt;
+&lt;p&gt;El RP2040 tiene bootloader USB integrado:&lt;/p&gt;</description></item><item><title>Programación PY32F003 con Arduino IDE</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/py32f003-programming/</link><pubDate>Mon, 13 Apr 2026 15:00:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/py32f003-programming/</guid><description>&lt;p&gt;El &lt;strong&gt;PY32F003&lt;/strong&gt; es un microcontrolador ARM Cortex-M0+ de Puya Semiconductor, ultra económico y compatible con Arduino IDE.&lt;/p&gt;
+&lt;h2 id="características-py32f003l24d6tr"&gt;Características PY32F003L24D6TR&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;🧠 &lt;strong&gt;CPU&lt;/strong&gt;: ARM Cortex-M0+ @ 24MHz&lt;/li&gt;
+&lt;li&gt;💾 &lt;strong&gt;Flash&lt;/strong&gt;: 20KB&lt;/li&gt;
+&lt;li&gt;🧮 &lt;strong&gt;RAM&lt;/strong&gt;: 3KB&lt;/li&gt;
+&lt;li&gt;📌 &lt;strong&gt;GPIO&lt;/strong&gt;: 13 pines&lt;/li&gt;
+&lt;li&gt;🔌 &lt;strong&gt;Periféricos&lt;/strong&gt;: UART, I2C, SPI, ADC (12-bit)&lt;/li&gt;
+&lt;li&gt;💰 &lt;strong&gt;Precio&lt;/strong&gt;: ~$0.10 USD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="instalación-arduino-ide"&gt;Instalación Arduino IDE&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Abre Arduino IDE&lt;/li&gt;
+&lt;li&gt;Ve a &lt;strong&gt;Archivo → Preferencias&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Agrega esta URL en &amp;ldquo;Gestor de URLs Adicionales&amp;rdquo;:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;https://github.com/py32duino/platform-py32f0.git
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start="4"&gt;
+&lt;li&gt;Ve a &lt;strong&gt;Herramientas → Placa → Gestor de placas&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Busca &amp;ldquo;PY32&amp;rdquo; e instala el paquete&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="conexiones-ch552--py32f003"&gt;Conexiones CH552 → PY32F003&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;CH552 (CMSIS-DAP) PY32F003
+═════════════════ ════════
+SWDIO ────→ SWDIO (PA13)
+SWDCLK ────→ SWDCLK (PA14)
+GND ────→ GND
+3.3V ────→ VDD
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="ejemplo-blink-arduino"&gt;Ejemplo Blink (Arduino)&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// PY32F003 Blink LED
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#define LED_PIN PA0
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;setup&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; pinMode(LED_PIN, OUTPUT);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;loop&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; digitalWrite(LED_PIN, HIGH);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; delay(&lt;span style="color:#ae81ff"&gt;1000&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; digitalWrite(LED_PIN, LOW);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; delay(&lt;span style="color:#ae81ff"&gt;1000&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="ejemplo-serial"&gt;Ejemplo Serial&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;setup&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.begin(&lt;span style="color:#ae81ff"&gt;115200&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;loop&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.println(&lt;span style="color:#e6db74"&gt;&amp;#34;Hola desde PY32F003!&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; delay(&lt;span style="color:#ae81ff"&gt;1000&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="ejemplo-adc"&gt;Ejemplo ADC&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#define ADC_PIN PA4
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;setup&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.begin(&lt;span style="color:#ae81ff"&gt;115200&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; pinMode(ADC_PIN, INPUT_ANALOG);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;loop&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; adcValue &lt;span style="color:#f92672"&gt;=&lt;/span&gt; analogRead(ADC_PIN);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;float&lt;/span&gt; voltage &lt;span style="color:#f92672"&gt;=&lt;/span&gt; (adcValue &lt;span style="color:#f92672"&gt;/&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;4095.0&lt;/span&gt;) &lt;span style="color:#f92672"&gt;*&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;3.3&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.print(&lt;span style="color:#e6db74"&gt;&amp;#34;ADC: &amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.print(adcValue);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.print(&lt;span style="color:#e6db74"&gt;&amp;#34; | Voltaje: &amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.print(voltage);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.println(&lt;span style="color:#e6db74"&gt;&amp;#34;V&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; delay(&lt;span style="color:#ae81ff"&gt;500&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="configurar-programador"&gt;Configurar programador&lt;/h2&gt;
+&lt;p&gt;En Arduino IDE:&lt;/p&gt;</description></item></channel></rss>

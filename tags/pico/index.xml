@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pico on Documentación UNIT</title><link>https://cesarbautista10.github.io/unit_blog_devlab/tags/pico/</link><description>Recent content in Pico on Documentación UNIT</description><generator>Hugo</generator><language>es</language><lastBuildDate>Mon, 13 Apr 2026 15:15:00 -0500</lastBuildDate><atom:link href="https://cesarbautista10.github.io/unit_blog_devlab/tags/pico/index.xml" rel="self" type="application/rss+xml"/><item><title>RP2040 - ARM Firmware para CH552</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/rp2040-firmware/</link><pubDate>Mon, 13 Apr 2026 15:15:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/rp2040-firmware/</guid><description>&lt;p&gt;El &lt;strong&gt;RP2040&lt;/strong&gt; es el microcontrolador de Raspberry Pi, con dual-core ARM Cortex-M0+ @ 133MHz, ideal para proyectos avanzados.&lt;/p&gt;
+&lt;h2 id="características-rp2040"&gt;Características RP2040&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;🧠 &lt;strong&gt;CPU&lt;/strong&gt;: Dual ARM Cortex-M0+ @ 133MHz&lt;/li&gt;
+&lt;li&gt;💾 &lt;strong&gt;RAM&lt;/strong&gt;: 264KB SRAM&lt;/li&gt;
+&lt;li&gt;🔌 &lt;strong&gt;GPIO&lt;/strong&gt;: 30 pines multifunción&lt;/li&gt;
+&lt;li&gt;⚡ &lt;strong&gt;PIO&lt;/strong&gt;: Programable I/O (8 state machines)&lt;/li&gt;
+&lt;li&gt;📡 &lt;strong&gt;USB&lt;/strong&gt;: USB 1.1 device/host nativo&lt;/li&gt;
+&lt;li&gt;🔢 &lt;strong&gt;ADC&lt;/strong&gt;: 12-bit, 500ksps&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="conexiones-ch552--rp2040"&gt;Conexiones CH552 → RP2040&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;CH552 (SWD Mode) Raspberry Pi Pico
+═════════════════ ══════════════════
+SWDIO ────→ SWDIO (Pin 3)
+SWDCLK ────→ SWDCLK (Pin 4)
+GND ────→ GND (Pin 8)
+3.3V ────→ 3V3 (Pin 36)
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="programar-con-pyocd"&gt;Programar con PyOCD&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Instalar PyOCD&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install pyocd
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Instalar pack RP2040&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyocd pack install rp2040
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Flashear firmware .uf2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyocd flash -t rp2040 firmware.uf2
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Flashear .elf&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyocd flash -t rp2040 firmware.elf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="modo-uf2-sin-programador"&gt;Modo UF2 (sin programador)&lt;/h2&gt;
+&lt;p&gt;El RP2040 tiene bootloader USB integrado:&lt;/p&gt;</description></item></channel></rss>

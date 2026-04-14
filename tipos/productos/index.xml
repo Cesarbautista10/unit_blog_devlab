@@ -1,1 +1,101 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Productos on Documentación UNIT</title><link>https://cesarbautista10.github.io/unit_blog_devlab/tipos/productos/</link><description>Recent content in Productos on Documentación UNIT</description><generator>Hugo</generator><language>es</language><lastBuildDate>Mon, 13 Apr 2026 11:30:00 -0500</lastBuildDate><atom:link href="https://cesarbautista10.github.io/unit_blog_devlab/tipos/productos/index.xml" rel="self" type="application/rss+xml"/><item><title>Demo 003 - Producto sensor listo para integracion</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/demo-003-producto-sensor/</link><pubDate>Mon, 13 Apr 2026 11:30:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/demo-003-producto-sensor/</guid><description>&lt;p&gt;Se habilito la ruta de diagnostico para responder dudas del equipo de soporte.&lt;/p&gt;</description></item><item><title>Demo 007 - Modulo de energia base</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/demo-007-modulo-energia-base/</link><pubDate>Sun, 12 Apr 2026 14:00:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/demo-007-modulo-energia-base/</guid><description>&lt;p&gt;Documento de referencia para diagnostico rapido de problemas de alimentacion.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Productos on Documentación UNIT</title><link>https://cesarbautista10.github.io/unit_blog_devlab/tipos/productos/</link><description>Recent content in Productos on Documentación UNIT</description><generator>Hugo</generator><language>es</language><lastBuildDate>Mon, 13 Apr 2026 14:50:00 -0500</lastBuildDate><atom:link href="https://cesarbautista10.github.io/unit_blog_devlab/tipos/productos/index.xml" rel="self" type="application/rss+xml"/><item><title>Ecosistema DevLab</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/devlab-ecosystem/</link><pubDate>Mon, 13 Apr 2026 14:50:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/devlab-ecosystem/</guid><description>&lt;p&gt;El &lt;strong&gt;Ecosistema DevLab&lt;/strong&gt; es un sistema modular de hardware que simplifica el prototipado electrónico mediante conectores estandarizados, permitiendo conexiones rápidas sin soldadura.&lt;/p&gt;
+&lt;h2 id="características-principales"&gt;Características principales&lt;/h2&gt;
+&lt;h3 id="-conector-devlab"&gt;🔌 Conector DevLab&lt;/h3&gt;
+&lt;p&gt;El conector DevLab es un sistema de 4 pines que incluye:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;VCC&lt;/strong&gt; (3.3V o 5V según el módulo)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GND&lt;/strong&gt; (tierra)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SDA&lt;/strong&gt; (I2C datos)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SCL&lt;/strong&gt; (I2C reloj)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="-ventajas-del-sistema-modular"&gt;🧩 Ventajas del sistema modular&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ &lt;strong&gt;Plug-and-play&lt;/strong&gt;: No requiere soldadura&lt;/li&gt;
+&lt;li&gt;✅ &lt;strong&gt;Daisy-chain&lt;/strong&gt;: Conecta múltiples módulos en cadena&lt;/li&gt;
+&lt;li&gt;✅ &lt;strong&gt;Compatibilidad I2C&lt;/strong&gt;: Compatible con QWIIC/Stemma QT&lt;/li&gt;
+&lt;li&gt;✅ &lt;strong&gt;Rápido prototipado&lt;/strong&gt;: Cambia módulos en segundos&lt;/li&gt;
+&lt;li&gt;✅ &lt;strong&gt;Reutilizable&lt;/strong&gt;: Los módulos se pueden usar en múltiples proyectos&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="categorías-de-productos"&gt;Categorías de productos&lt;/h2&gt;
+&lt;h3 id="tarjetas-de-desarrollo"&gt;Tarjetas de desarrollo&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;ESP32 DevLab&lt;/strong&gt;: Microcontrolador WiFi/Bluetooth con conector DevLab&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CH552 Multi-Protocol&lt;/strong&gt;: Programador USB multi-función&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PY32 DevLab&lt;/strong&gt;: ARM Cortex-M0+ ultra económico&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AVR DevLab&lt;/strong&gt;: Basado en ATmega328P compatible Arduino&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="módulos-sensores"&gt;Módulos sensores&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Sensor de temperatura y humedad (DHT22)&lt;/li&gt;
+&lt;li&gt;Sensor de presión barométrica (BMP280)&lt;/li&gt;
+&lt;li&gt;Sensor de luz ambiente (BH1750)&lt;/li&gt;
+&lt;li&gt;Acelerómetro/giroscopio (MPU6050)&lt;/li&gt;
+&lt;li&gt;Sensor de distancia ultrasónico&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="módulos-actuadores"&gt;Módulos actuadores&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Display OLED (128x64)&lt;/li&gt;
+&lt;li&gt;Matriz LED 8x8&lt;/li&gt;
+&lt;li&gt;Relé de 5V&lt;/li&gt;
+&lt;li&gt;Servomotor&lt;/li&gt;
+&lt;li&gt;Motor DC con driver&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="módulos-de-comunicación"&gt;Módulos de comunicación&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Módulo WiFi (ESP-01)&lt;/li&gt;
+&lt;li&gt;Bluetooth HC-05&lt;/li&gt;
+&lt;li&gt;NRF24L01 (2.4GHz)&lt;/li&gt;
+&lt;li&gt;LoRa SX1278&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="ejemplo-de-conexión"&gt;Ejemplo de conexión&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;┌──────────────┐ DevLab ┌──────────────┐ DevLab ┌──────────────┐
+│ ESP32 │──────────────│ BMP280 │──────────────│ OLED │
+│ DevLab │ Conector │ (Sensor) │ Conector │ Display │
+└──────────────┘ └──────────────┘ └──────────────┘
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Todos los dispositivos comparten el bus I2C y la alimentación.&lt;/p&gt;</description></item><item><title>Conector QWIIC - Comunicación I2C</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/qwiic-i2c-connector/</link><pubDate>Mon, 13 Apr 2026 14:15:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/qwiic-i2c-connector/</guid><description>&lt;p&gt;El conector QWIIC es un estándar de conexión rápida que utiliza comunicación I2C para conectar múltiples sensores y módulos sin necesidad de soldadura.&lt;/p&gt;
+&lt;h2 id="especificaciones-del-conector"&gt;Especificaciones del conector&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tipo&lt;/strong&gt;: JST SH 1.0mm 4 pines&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Voltaje&lt;/strong&gt;: 3.3V&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Protocolo&lt;/strong&gt;: I2C&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pinout estándar&lt;/strong&gt;:
+&lt;ol&gt;
+&lt;li&gt;GND (Negro)&lt;/li&gt;
+&lt;li&gt;3.3V (Rojo)&lt;/li&gt;
+&lt;li&gt;SDA (Azul)&lt;/li&gt;
+&lt;li&gt;SCL (Amarillo)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="ventajas-del-sistema-qwiic"&gt;Ventajas del sistema QWIIC&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ Conexión rápida sin soldadura&lt;/li&gt;
+&lt;li&gt;✅ Polaridad protegida (no se puede conectar al revés)&lt;/li&gt;
+&lt;li&gt;✅ Daisy-chain (conectar múltiples dispositivos)&lt;/li&gt;
+&lt;li&gt;✅ Compatible con SparkFun Qwiic y Adafruit STEMMA QT&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="uso-con-arduino"&gt;Uso con Arduino&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;Wire.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;setup&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.begin(&lt;span style="color:#ae81ff"&gt;115200&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Wire.begin(); &lt;span style="color:#75715e"&gt;// Inicializa I2C
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// Escanea dispositivos I2C
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.println(&lt;span style="color:#e6db74"&gt;&amp;#34;Escaneando...&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt;(byte address &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;; address &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;127&lt;/span&gt;; address&lt;span style="color:#f92672"&gt;++&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Wire.beginTransmission(address);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; byte error &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Wire.endTransmission();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (error &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.print(&lt;span style="color:#e6db74"&gt;&amp;#34;Dispositivo encontrado en 0x&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Serial.println(address, HEX);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;loop&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// Tu código aquí
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="conexión-de-múltiples-dispositivos"&gt;Conexión de múltiples dispositivos&lt;/h2&gt;
+&lt;p&gt;Puedes conectar múltiples módulos en serie (daisy-chain) siempre que:&lt;/p&gt;</description></item></channel></rss>

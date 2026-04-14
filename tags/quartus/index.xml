@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Quartus on Documentación UNIT</title><link>https://cesarbautista10.github.io/unit_blog_devlab/tags/quartus/</link><description>Recent content in Quartus on Documentación UNIT</description><generator>Hugo</generator><language>es</language><lastBuildDate>Mon, 13 Apr 2026 15:25:00 -0500</lastBuildDate><atom:link href="https://cesarbautista10.github.io/unit_blog_devlab/tags/quartus/index.xml" rel="self" type="application/rss+xml"/><item><title>CPLD/FPGA - Programación Intel MAX II</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/cpld-fpga-programming/</link><pubDate>Mon, 13 Apr 2026 15:25:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/cpld-fpga-programming/</guid><description>&lt;p&gt;Los &lt;strong&gt;CPLD&lt;/strong&gt; (Complex Programmable Logic Device) permiten implementar lógica digital customizada sin fabricar un chip ASIC.&lt;/p&gt;
+&lt;h2 id="intel-max-ii-epm240"&gt;Intel MAX II EPM240&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;🔧 &lt;strong&gt;Logic Elements&lt;/strong&gt;: 240 LEs&lt;/li&gt;
+&lt;li&gt;💾 &lt;strong&gt;Flash&lt;/strong&gt;: 8192 bits RAM integrada&lt;/li&gt;
+&lt;li&gt;📌 &lt;strong&gt;GPIO&lt;/strong&gt;: Hasta 80 pines I/O&lt;/li&gt;
+&lt;li&gt;⚡ &lt;strong&gt;Velocidad&lt;/strong&gt;: Hasta 304MHz&lt;/li&gt;
+&lt;li&gt;🔌 &lt;strong&gt;Voltaje&lt;/strong&gt;: 3.3V / 2.5V / 1.8V&lt;/li&gt;
+&lt;li&gt;💰 &lt;strong&gt;No-volátil&lt;/strong&gt;: Configuración permanente&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="conexiones-jtag"&gt;Conexiones JTAG&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;CH552 (JTAG Mode) MAX II EPM240
+══════════════════ ═══════════════
+TCK ────→ TCK
+TMS ────→ TMS
+TDI ────→ TDI
+TDO ────← TDO
+GND ────→ GND
+3.3V ────→ VCCIO
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="instalar-quartus-prime-lite"&gt;Instalar Quartus Prime Lite&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Descarga &lt;a href="https://www.intel.com/content/www/us/en/software-kit/825278/intel-quartus-prime-lite-edition-design-software-version-23-1-1-for-linux.html"&gt;Quartus Prime Lite&lt;/a&gt; (gratis)&lt;/li&gt;
+&lt;li&gt;Instala componente MAX II/MAX V&lt;/li&gt;
+&lt;li&gt;Crea nuevo proyecto → MAX II → EPM240&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="ejemplo-contador-4-bit"&gt;Ejemplo: Contador 4-bit&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-verilog" data-lang="verilog"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;module&lt;/span&gt; contador4bit (
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;input&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;wire&lt;/span&gt; clk,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;input&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;wire&lt;/span&gt; reset,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;output&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;reg&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] count
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;always&lt;/span&gt; @(&lt;span style="color:#66d9ef"&gt;posedge&lt;/span&gt; clk &lt;span style="color:#66d9ef"&gt;or&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;posedge&lt;/span&gt; reset) &lt;span style="color:#66d9ef"&gt;begin&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (reset)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; count &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;4&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b0000&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; count &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; count &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;endmodule&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="ejemplo-decodificador-7-segmentos"&gt;Ejemplo: Decodificador 7 segmentos&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-verilog" data-lang="verilog"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;module&lt;/span&gt; decodificador7seg (
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;input&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;wire&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] bcd,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;output&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;reg&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;6&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] seg
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;always&lt;/span&gt; @(&lt;span style="color:#f92672"&gt;*&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;begin&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;case&lt;/span&gt; (bcd)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ae81ff"&gt;4&amp;#39;h0&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; seg &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;7&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b1111110&lt;/span&gt;; &lt;span style="color:#75715e"&gt;// 0
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ae81ff"&gt;4&amp;#39;h1&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; seg &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;7&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b0110000&lt;/span&gt;; &lt;span style="color:#75715e"&gt;// 1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ae81ff"&gt;4&amp;#39;h2&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; seg &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;7&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b1101101&lt;/span&gt;; &lt;span style="color:#75715e"&gt;// 2
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ae81ff"&gt;4&amp;#39;h3&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; seg &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;7&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b1111001&lt;/span&gt;; &lt;span style="color:#75715e"&gt;// 3
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ae81ff"&gt;4&amp;#39;h4&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; seg &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;7&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b0110011&lt;/span&gt;; &lt;span style="color:#75715e"&gt;// 4
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ae81ff"&gt;4&amp;#39;h5&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; seg &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;7&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b1011011&lt;/span&gt;; &lt;span style="color:#75715e"&gt;// 5
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ae81ff"&gt;4&amp;#39;h6&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; seg &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;7&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b1011111&lt;/span&gt;; &lt;span style="color:#75715e"&gt;// 6
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ae81ff"&gt;4&amp;#39;h7&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; seg &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;7&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b1110000&lt;/span&gt;; &lt;span style="color:#75715e"&gt;// 7
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ae81ff"&gt;4&amp;#39;h8&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; seg &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;7&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b1111111&lt;/span&gt;; &lt;span style="color:#75715e"&gt;// 8
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ae81ff"&gt;4&amp;#39;h9&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; seg &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;7&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b1111011&lt;/span&gt;; &lt;span style="color:#75715e"&gt;// 9
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;default&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; seg &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;7&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b0000000&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;endcase&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;endmodule&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="ejemplo-máquina-de-estados-fsm"&gt;Ejemplo: Máquina de estados (FSM)&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-verilog" data-lang="verilog"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;module&lt;/span&gt; fsm_semaforo (
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;input&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;wire&lt;/span&gt; clk,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;input&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;wire&lt;/span&gt; reset,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;output&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;reg&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] luces &lt;span style="color:#75715e"&gt;// [R, Y, G]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;reg&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] estado;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;parameter&lt;/span&gt; VERDE &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b00&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; AMARILLO &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b01&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ROJO &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b10&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;always&lt;/span&gt; @(&lt;span style="color:#66d9ef"&gt;posedge&lt;/span&gt; clk &lt;span style="color:#66d9ef"&gt;or&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;posedge&lt;/span&gt; reset) &lt;span style="color:#66d9ef"&gt;begin&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (reset)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; estado &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; ROJO;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;else&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;begin&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;case&lt;/span&gt; (estado)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; VERDE: estado &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; AMARILLO;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; AMARILLO: estado &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; ROJO;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ROJO: estado &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; VERDE;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;default&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; estado &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; ROJO;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;endcase&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;always&lt;/span&gt; @(&lt;span style="color:#f92672"&gt;*&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;begin&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;case&lt;/span&gt; (estado)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; VERDE: luces &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b001&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; AMARILLO: luces &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b010&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ROJO: luces &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b100&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;default&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; luces &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&amp;#39;b000&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;endcase&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;endmodule&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="programar-con-quartus-programmer"&gt;Programar con Quartus Programmer&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Compila tu diseño (Processing → Start Compilation)&lt;/li&gt;
+&lt;li&gt;Abre Programmer (Tools → Programmer)&lt;/li&gt;
+&lt;li&gt;Agrega archivo &lt;code&gt;.pof&lt;/code&gt; o &lt;code&gt;.sof&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Selecciona hardware: USB-Blaster (si detecta CH552 JTAG)&lt;/li&gt;
+&lt;li&gt;Presiona &lt;strong&gt;Start&lt;/strong&gt; para programar&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="programar-con-urjtag-linux"&gt;Programar con urjtag (Linux)&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Instalar urjtag&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install urjtag
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Conectar&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;jtag
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;gt; cable ft2232
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;gt; detect
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;gt; pld load blink.svf
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Salir&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;gt; quit
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="vhdl-vs-verilog"&gt;VHDL vs Verilog&lt;/h2&gt;
+&lt;h3 id="verilog-más-común-en-tutoriales"&gt;Verilog (más común en tutoriales)&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-verilog" data-lang="verilog"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;module&lt;/span&gt; blink (
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;input&lt;/span&gt; clk,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;output&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;reg&lt;/span&gt; led
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;reg&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;24&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] counter;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;always&lt;/span&gt; @(&lt;span style="color:#66d9ef"&gt;posedge&lt;/span&gt; clk) &lt;span style="color:#66d9ef"&gt;begin&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; counter &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; counter &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; led &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; counter[&lt;span style="color:#ae81ff"&gt;24&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;endmodule&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="vhdl-más-verboso-industria"&gt;VHDL (más verboso, industria)&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-vhdl" data-lang="vhdl"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;library&lt;/span&gt; IEEE;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;use&lt;/span&gt; IEEE.STD_LOGIC_1164.&lt;span style="color:#66d9ef"&gt;ALL&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;entity&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;blink&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;is&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;Port&lt;/span&gt; ( clk &lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;in&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;STD_LOGIC&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; led &lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;out&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;STD_LOGIC&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;end&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;blink&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;architecture&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Behavioral&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;of&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;blink&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;is&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;signal&lt;/span&gt; counter &lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;unsigned&lt;/span&gt;(&lt;span style="color:#ae81ff"&gt;24&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;downto&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;begin&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;process&lt;/span&gt;(clk)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;begin&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; rising_edge(clk) &lt;span style="color:#66d9ef"&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; counter &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; counter &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; led &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; counter(&lt;span style="color:#ae81ff"&gt;24&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;end&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;end&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;process&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;end&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Behavioral&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="simulación-con-modelsim"&gt;Simulación con ModelSim&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Compilar testbench&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vlog contador4bit.v
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vlog contador4bit_tb.v
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Simular&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vsim contador4bit_tb
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Ver formas de onda&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;add wave *
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;run 1000ns
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="ejemplo-testbench"&gt;Ejemplo testbench&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-verilog" data-lang="verilog"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;`timescale&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;ns&lt;span style="color:#f92672"&gt;/&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;ps
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;module&lt;/span&gt; contador4bit_tb;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;reg&lt;/span&gt; clk, reset;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;wire&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] count;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; contador4bit uut (
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; .clk(clk),
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; .reset(reset),
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; .count(count)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; );
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;initial&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;begin&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; clk &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;forever&lt;/span&gt; #&lt;span style="color:#ae81ff"&gt;5&lt;/span&gt; clk &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#f92672"&gt;~&lt;/span&gt;clk; &lt;span style="color:#75715e"&gt;// 100MHz clock
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;initial&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;begin&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; reset &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; #&lt;span style="color:#ae81ff"&gt;20&lt;/span&gt; reset &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; #&lt;span style="color:#ae81ff"&gt;500&lt;/span&gt; $finish;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;initial&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;begin&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; $monitor(&lt;span style="color:#e6db74"&gt;&amp;#34;Time=%0t Reset=%b Count=%d&amp;#34;&lt;/span&gt;, $time, reset, count);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;endmodule&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="ventajas-cpld-vs-fpga"&gt;Ventajas CPLD vs FPGA&lt;/h2&gt;
+&lt;h3 id="cpld-max-ii"&gt;CPLD (MAX II)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ &lt;strong&gt;No-volátil&lt;/strong&gt;: Configuración permanente&lt;/li&gt;
+&lt;li&gt;✅ &lt;strong&gt;Instant-on&lt;/strong&gt;: Sin tiempo de carga&lt;/li&gt;
+&lt;li&gt;✅ &lt;strong&gt;Bajo consumo&lt;/strong&gt;: Ideal para batería&lt;/li&gt;
+&lt;li&gt;✅ &lt;strong&gt;Económico&lt;/strong&gt;: &amp;lt;$5 USD&lt;/li&gt;
+&lt;li&gt;✅ &lt;strong&gt;Simple&lt;/strong&gt;: Menos complejidad que FPGA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="fpga-más-avanzado"&gt;FPGA (más avanzado)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Más logic elements (10K+)&lt;/li&gt;
+&lt;li&gt;RAM interna grande&lt;/li&gt;
+&lt;li&gt;Multiplicadores hardware&lt;/li&gt;
+&lt;li&gt;PLLs integrados&lt;/li&gt;
+&lt;li&gt;Mayor costo y consumo&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="aplicaciones-cpld"&gt;Aplicaciones CPLD&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;🔌 &lt;strong&gt;GPIO expander&lt;/strong&gt;: Más pines I/O&lt;/li&gt;
+&lt;li&gt;🎮 &lt;strong&gt;Controlador customizado&lt;/strong&gt;: Protocolos propietarios&lt;/li&gt;
+&lt;li&gt;📊 &lt;strong&gt;Generador de señales&lt;/strong&gt;: PWM multi-canal&lt;/li&gt;
+&lt;li&gt;🔐 &lt;strong&gt;Glue logic&lt;/strong&gt;: Interfaces entre chips&lt;/li&gt;
+&lt;li&gt;⏱️ &lt;strong&gt;Contador hardware&lt;/strong&gt;: Alta velocidad&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

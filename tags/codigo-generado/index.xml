@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Codigo-Generado on Documentación UNIT</title><link>https://cesarbautista10.github.io/unit_blog_devlab/tags/codigo-generado/</link><description>Recent content in Codigo-Generado on Documentación UNIT</description><generator>Hugo</generator><language>es</language><lastBuildDate>Mon, 13 Apr 2026 15:30:00 -0500</lastBuildDate><atom:link href="https://cesarbautista10.github.io/unit_blog_devlab/tags/codigo-generado/index.xml" rel="self" type="application/rss+xml"/><item><title>MATLAB/Simulink - Integración Hardware</title><link>https://cesarbautista10.github.io/unit_blog_devlab/avances/matlab-proximamente/</link><pubDate>Mon, 13 Apr 2026 15:30:00 -0500</pubDate><guid>https://cesarbautista10.github.io/unit_blog_devlab/avances/matlab-proximamente/</guid><description>&lt;h2 id="-próximamente"&gt;🚧 Próximamente&lt;/h2&gt;
+&lt;p&gt;La integración de &lt;strong&gt;MATLAB/Simulink&lt;/strong&gt; con el ecosistema DevLab está en desarrollo.&lt;/p&gt;
+&lt;h3 id="funcionalidades-planeadas"&gt;Funcionalidades planeadas&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;📊 &lt;strong&gt;Simulink Support Package&lt;/strong&gt;: Bloques para DevLab&lt;/li&gt;
+&lt;li&gt;🔌 &lt;strong&gt;Hardware Support&lt;/strong&gt;: Conexión directa USB&lt;/li&gt;
+&lt;li&gt;🤖 &lt;strong&gt;Generación de código&lt;/strong&gt;: C/C++ automático desde Simulink&lt;/li&gt;
+&lt;li&gt;📈 &lt;strong&gt;Data acquisition&lt;/strong&gt;: Captura de datos en tiempo real&lt;/li&gt;
+&lt;li&gt;🧪 &lt;strong&gt;HIL Testing&lt;/strong&gt;: Hardware-in-the-loop testing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="por-qué-matlabsimulink"&gt;¿Por qué MATLAB/Simulink?&lt;/h3&gt;
+&lt;p&gt;MATLAB es el estándar en ingeniería para:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Procesamiento de señales&lt;/li&gt;
+&lt;li&gt;Control de sistemas&lt;/li&gt;
+&lt;li&gt;Visión por computadora&lt;/li&gt;
+&lt;li&gt;Machine Learning&lt;/li&gt;
+&lt;li&gt;Diseño de filtros digitales&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="alternativas-actuales"&gt;Alternativas actuales&lt;/h3&gt;
+&lt;p&gt;Mientras esperamos la integración oficial, puedes usar:&lt;/p&gt;</description></item></channel></rss>
