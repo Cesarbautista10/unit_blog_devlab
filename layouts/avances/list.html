@@ -51,9 +51,9 @@
         data-resumen="{{ .Params.resumen | lower }}" 
         data-tarjeta="{{ .Params.tarjeta | lower }}" 
         data-estado="{{ .Params.estado | lower }}"
-        data-tipos="{{ delimit .Params.tipos " " | lower }}"
-        data-modulos="{{ delimit .Params.modulos " " | lower }}"
-        data-tags="{{ delimit .Params.tags " " | lower }}">
+        data-tipos="{{ if .Params.tipos }}{{ delimit .Params.tipos " " | lower }}{{ end }}"
+        data-modulos="{{ if .Params.modulos }}{{ delimit .Params.modulos " " | lower }}{{ end }}"
+        data-tags="{{ if .Params.tags }}{{ delimit .Params.tags " " | lower }}{{ end }}">
         {{ $img := "" }}
         {{ with .Params.fotos }}{{ $img = index . 0 }}{{ end }}
         {{ if and $img (not (or (hasPrefix $img "http://") (hasPrefix $img "https://") (hasPrefix $img "//") (hasPrefix $img "data:"))) }}
